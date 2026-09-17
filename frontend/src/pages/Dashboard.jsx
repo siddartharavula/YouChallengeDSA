@@ -26,7 +26,7 @@ function Dashboard() {
 
         // Challenge is public
         const challengeResponse = await axios.get(
-          `http://localhost:5000/api/challenges/${days}`
+          `https://youchallengedsa.onrender.com/api/challenges/${days}`
         );
 
         setChallenge(
@@ -39,7 +39,7 @@ function Dashboard() {
         if (token) {
           try {
             const progressResponse = await axios.get(
-              `http://localhost:5000/api/progress/${days}`,
+              `https://youchallengedsa.onrender.com/api/progress/${days}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ function Dashboard() {
     // Logged-in user → save progress
     try {
       await axios.put(
-        `http://localhost:5000/api/progress/${days}`,
+        `https://youchallengedsa.onrender.com/api/progress/${days}`,
         {
           problemLink,
           solved: !isCurrentlySolved,

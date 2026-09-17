@@ -30,7 +30,7 @@ function Register() {
       setError("");
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://youchallengedsa.onrender.com/api/auth/register",
         formData
       );
 

@@ -71,7 +71,7 @@ function Profile() {
         const results = await Promise.all(
           challenges.map(async (days) => {
             const response = await axios.get(
-              `http://localhost:5000/api/progress/${days}`,
+              `https://youchallengedsa.onrender.com/api/progress/${days}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,

@@ -25,7 +25,7 @@ function Navbar({ onMenuClick }) {
     const fetchStreak = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/progress/15",
+          "https://youchallengedsa.onrender.com/api/progress/15",
           {
             headers: {
               Authorization: `Bearer ${token}`,
