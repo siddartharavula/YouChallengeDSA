@@ -114,7 +114,7 @@ const challenge = [
         platform: "smartinterviews",
       },
       {
-        name: "Combination Sum Ii",
+        name: "Combination Sum 2",
         link: "https://leetcode.com/problems/combination-sum-ii/",
         platform: "leetcode",
       },
@@ -145,7 +145,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Next Greater Element Ii",
+        name: "Next Greater Element 2",
         link: "https://leetcode.com/problems/next-greater-element-ii/",
         platform: "leetcode",
       },
@@ -165,7 +165,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Course Schedule Ii",
+        name: "Course Schedule 2",
         link: "https://leetcode.com/problems/course-schedule-ii/",
         platform: "leetcode",
       },
@@ -180,7 +180,7 @@ const challenge = [
         platform: "smartinterviews",
       },
       {
-        name: "Search In Rotated Sorted Array Ii",
+        name: "Search In Rotated Sorted Array 2",
         link: "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/",
         platform: "leetcode",
       },
@@ -200,7 +200,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Next Greater Element I",
+        name: "Next Greater Element",
         link: "https://leetcode.com/problems/next-greater-element-i/",
         platform: "leetcode",
       },
@@ -312,7 +312,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Best Time To Buy And Sell Stock Ii",
+        name: "Best Time To Buy And Sell Stock 2",
         link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
         platform: "leetcode",
       },
@@ -474,12 +474,12 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Unique Paths Ii",
+        name: "Unique Paths 2",
         link: "https://leetcode.com/problems/unique-paths-ii/",
         platform: "leetcode",
       },
       {
-        name: "House Robber Ii",
+        name: "House Robber 2",
         link: "https://leetcode.com/problems/house-robber-ii/",
         platform: "leetcode",
       },
@@ -591,7 +591,7 @@ const challenge = [
         platform: "smartinterviews",
       },
       {
-        name: "01 Matrix",
+        name: "0 1 Matrix",
         link: "https://leetcode.com/problems/01-matrix/",
         platform: "leetcode",
       },
@@ -647,7 +647,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "3Sum",
+        name: "3 Sum",
         link: "https://leetcode.com/problems/3sum/",
         platform: "leetcode",
       },
@@ -708,7 +708,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "House Robber II",
+        name: "House Robber 2",
         link: "https://leetcode.com/problems/house-robber-ii/",
         platform: "leetcode",
       },
@@ -809,7 +809,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "3Sum",
+        name: "3 Sum",
         link: "https://leetcode.com/problems/3sum/",
         platform: "leetcode",
       },
@@ -865,7 +865,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Combination Sum Iii",
+        name: "Combination Sum 3",
         link: "https://leetcode.com/problems/combination-sum-iii/",
         platform: "leetcode",
       },
@@ -895,7 +895,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Jump Game Ii",
+        name: "Jump Game 2",
         link: "https://leetcode.com/problems/jump-game-ii/",
         platform: "leetcode",
       },
@@ -931,7 +931,7 @@ const challenge = [
         platform: "smartinterviews",
       },
       {
-        name: "Best Time To Buy And Sell Stock Iii",
+        name: "Best Time To Buy And Sell Stock 3",
         link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
         platform: "leetcode",
       },
@@ -951,7 +951,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Best Time To Buy And Sell Stock Iv",
+        name: "Best Time To Buy And Sell Stock 4",
         link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
         platform: "leetcode",
       },

@@ -70,7 +70,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Infix To Postfix 1587115620",
+        name: "Infix To Postfix",
         link: "https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1",
         platform: "geeksforgeeks",
       },
@@ -81,7 +81,7 @@ const challenge = [
     day: 4,
     problems: [
       {
-        name: "Max Sum Subarray Of Size K5313",
+        name: "Max Sum Subarray Of Size K",
         link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
         platform: "geeksforgeeks",
       },
