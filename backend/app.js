@@ -8,7 +8,15 @@ const profileRoutes = require("./routes/profileRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://you-challenge-dsa.vercel.app",
+    ],
+  })
+);
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
