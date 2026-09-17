@@ -14,10 +14,6 @@ The goal is simple: **practice DSA every day and stay consistent across differen
 
 https://you-challenge-dsa.vercel.app/dashboard/15
 
-## 💻 GitHub Repository
-
-https://github.com/siddartharavula/YouChallengeDSA.git
-
 ## Run Locally
 
 ### 1. Clone the Repository
