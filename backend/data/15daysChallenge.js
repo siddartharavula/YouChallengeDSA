@@ -353,7 +353,7 @@ const challenge = [
     day: 6,
     problems: [
       {
-        name: "Perfect Sum Problem5633",
+        name: "Count Subsets with Sum",
         link: "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
         platform: "geeksforgeeks",
       },
@@ -657,7 +657,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Max Sum Subarray Of Size K5313",
+        name: "Max Sum Subarray Of Size K",
         link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
         platform: "geeksforgeeks",
       },
@@ -794,7 +794,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Rotation4723",
+        name: "Find Kth Rotation",
         link: "https://www.geeksforgeeks.org/problems/rotation4723/1",
         platform: "geeksforgeeks",
       },
@@ -987,7 +987,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Max Sum Subarray Of Size K5313",
+        name: "Max Sum Subarray of size K",
         link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
         platform: "geeksforgeeks",
       },

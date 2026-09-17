@@ -131,7 +131,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Path In Matrix3805",
+        name: "Path In Matrix",
         link: "https://www.geeksforgeeks.org/problems/path-in-matrix3805/1",
         platform: "geeksforgeeks",
       },
@@ -336,7 +336,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Longest Bitonic Subsequence0824",
+        name: "Longest Bitonic Subsequence",
         link: "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1",
         platform: "geeksforgeeks",
       },
@@ -747,7 +747,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Max Sum Subarray Of Size K5313",
+        name: "Max Sum Subarray of size K",
         link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
         platform: "geeksforgeeks",
       },
@@ -757,7 +757,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Rotation4723",
+        name: "Find Kth Rotation",
         link: "https://www.geeksforgeeks.org/problems/rotation4723/1",
         platform: "geeksforgeeks",
       },
@@ -824,7 +824,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Implementing Floyd Warshall2042",
+        name: "Implementing Floyd Warshall",
         link: "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1",
         platform: "geeksforgeeks",
       },
@@ -989,7 +989,7 @@ const challenge = [
     day: 27,
     problems: [
       {
-        name: "Longest Increasing Subsequence 1587115620",
+        name: "Longest Increasing Subsequence",
         link: "https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1",
         platform: "geeksforgeeks",
       },
@@ -1066,7 +1066,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Perfect Sum Problem5633",
+        name: "Count Subsets with Sum",
         link: "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
         platform: "geeksforgeeks",
       },
@@ -1112,7 +1112,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Missing Number In Array1416",
+        name: "Missing Number In Array",
         link: "https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1",
         platform: "geeksforgeeks",
       },
