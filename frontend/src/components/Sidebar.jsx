@@ -6,8 +6,10 @@ function Sidebar({ isOpen, onClose }) {
 
   const challenges = [15, 30, 45];
 
-  const isActive = (days) =>
+  const isChallengeActive = (days) =>
     location.pathname === `/dashboard/${days}`;
+
+  const isBeginnerActive = location.pathname === "/beginner";
 
   return (
     <>
@@ -40,12 +42,8 @@ function Sidebar({ isOpen, onClose }) {
         {/* Mobile header */}
         <div className="flex h-16 items-center justify-between border-b border-gray-800 px-5 md:hidden">
           <h2 className="text-lg font-bold">
-            <span className="text-white">
-              YouChallenge
-            </span>
-            <span className="text-green-500">
-              DSA
-            </span>
+            <span className="text-white">YouChallenge</span>
+            <span className="text-green-500">DSA</span>
           </h2>
 
           <button
@@ -59,7 +57,37 @@ function Sidebar({ isOpen, onClose }) {
 
         {/* Sidebar content */}
         <div className="p-5">
+
+          {/* Beginner */}
           <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
+            Practice
+          </p>
+
+          <Link
+            to="/beginner"
+            onClick={onClose}
+            className={`
+              flex items-center justify-between
+              rounded-lg
+              px-4 py-3
+              text-sm font-medium
+              transition
+              ${
+                isBeginnerActive
+                  ? "bg-green-500 text-gray-950"
+                  : "text-gray-400 hover:bg-gray-900 hover:text-white"
+              }
+            `}
+          >
+            <span>Beginner Problems</span>
+
+            {isBeginnerActive && (
+              <span className="text-xs font-bold">→</span>
+            )}
+          </Link>
+
+          {/* Challenges */}
+          <p className="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
             Challenges
           </p>
 
@@ -76,20 +104,16 @@ function Sidebar({ isOpen, onClose }) {
                   text-sm font-medium
                   transition
                   ${
-                    isActive(days)
+                    isChallengeActive(days)
                       ? "bg-green-500 text-gray-950"
                       : "text-gray-400 hover:bg-gray-900 hover:text-white"
                   }
                 `}
               >
-                <span>
-                  {days} Days
-                </span>
+                <span>{days} Days</span>
 
-                {isActive(days) && (
-                  <span className="text-xs font-bold">
-                    →
-                  </span>
+                {isChallengeActive(days) && (
+                  <span className="text-xs font-bold">→</span>
                 )}
               </Link>
             ))}

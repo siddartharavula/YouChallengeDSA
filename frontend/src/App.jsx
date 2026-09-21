@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
+import Beginner from "./pages/Beginner";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -15,7 +16,13 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Dashboard is PUBLIC */}
+        {/* Beginner Problems */}
+        <Route
+          path="/beginner"
+          element={<Beginner />}
+        />
+
+        {/* Dashboard Challenges */}
         <Route
           path="/dashboard/:days"
           element={<Dashboard />}
