@@ -217,7 +217,7 @@ function Dashboard() {
             {/* Stats */}
             <div className="grid w-full grid-cols-2 gap-3 lg:w-auto">
 
-              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-[140px]">
+              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-35">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
                   Problems
                 </p>
@@ -239,7 +239,7 @@ function Dashboard() {
                 </p>
               </div>
 
-              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-[140px]">
+              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-35">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
                   Days
                 </p>
@@ -267,7 +267,7 @@ function Dashboard() {
 
         {/* Guest Message */}
         {guestMessage && (
-          <div className="fixed bottom-5 left-1/2 z-[100] -translate-x-1/2 rounded-xl border border-gray-700 bg-gray-900 px-5 py-3 shadow-2xl">
+          <div className="fixed bottom-5 left-1/2 z-100 -translate-x-1/2 rounded-xl border border-gray-700 bg-gray-900 px-5 py-3 shadow-2xl">
             <p className="whitespace-nowrap text-sm text-gray-300">
               🔒 {guestMessage}
             </p>

@@ -97,7 +97,7 @@ function DayAccordion({
             : ""
         } ${
           isSolved
-            ? "bg-green-500/[0.02]"
+            ? "bg-green-500/2"
             : "hover:bg-gray-800/40"
         }`}
       >
@@ -183,7 +183,7 @@ function DayAccordion({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-gray-800/30 sm:px-5 sm:py-4"
+        className="flex w-full items-center justify-between gap-4 px-4 py-1 text-left transition-colors hover:bg-gray-800/30 sm:px-5 sm:py-4"
       >
         <div className="flex min-w-0 items-center gap-3">
           {/* Day Number */}
@@ -283,7 +283,7 @@ function DayAccordion({
                 <div className="flex items-center gap-3">
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-green-500/10">
                     <span className="text-xs font-bold text-green-500">
-                      D
+                      DSA
                     </span>
                   </div>
 
