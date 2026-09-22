@@ -6,7 +6,7 @@ function DayAccordion({
   onToggleProblem,
 }) {
   const [open, setOpen] = useState(false);
-  const [dsaOpen, setDsaOpen] = useState(true);
+  const [dsaOpen, setDsaOpen] = useState(false);
   const [sqlOpen, setSqlOpen] = useState(false);
 
   const dsaProblems = day.problems || [];
