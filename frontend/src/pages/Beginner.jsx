@@ -9,26 +9,50 @@ const platformData = {
     name: "LeetCode",
     logo: "/logos/leetcode.png",
   },
+
   geeksforgeeks: {
     name: "GeeksforGeeks",
     logo: "/logos/geeksforgeeks.png",
   },
+
   smartinterviews: {
     name: "SmartInterviews",
     logo: "/logos/smartinterviews.png",
   },
+
   codechef: {
     name: "CodeChef",
     logo: "/logos/codechef.png",
+  },
+
+  hackerrank: {
+    name: "HackerRank",
+    logo: "/logos/hackerrank.png",
   },
 };
 
 function Beginner() {
   const [data, setData] = useState(null);
-  const [completed, setCompleted] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Only one topic open at a time
+  const [openTopic, setOpenTopic] = useState(null);
+
+  // Completed problems
+  const [completed, setCompleted] = useState(() => {
+    try {
+      return new Set(
+        JSON.parse(localStorage.getItem("beginnerSolvedProblems") || "[]")
+      );
+    } catch {
+      return new Set();
+    }
+  });
+
+  // ==============================
+  // Fetch Beginner Problems
+  // ==============================
   useEffect(() => {
     const fetchBeginner = async () => {
       try {
@@ -36,9 +60,11 @@ function Beginner() {
         setError("");
 
         const response = await axios.get(
-          "https://youchallengedsa.onrender.com/api/dsa/beginner",
+          "https://youchallengedsa.onrender.com/api/dsa/beginner"
         );
+
         console.log("Beginner Problems Response:", response.data);
+
         setData(response.data);
       } catch (error) {
         console.log("ERROR:", error);
@@ -47,7 +73,8 @@ function Beginner() {
         console.log("DATA:", error.response?.data);
 
         setError(
-          error.response?.data?.message || "Failed to load beginner problems.",
+          error.response?.data?.message ||
+            "Failed to load beginner problems."
         );
       } finally {
         setLoading(false);
@@ -57,24 +84,53 @@ function Beginner() {
     fetchBeginner();
   }, []);
 
-  const toggleCompleted = (key) => {
-    setCompleted((previous) => ({
-      ...previous,
-      [key]: !previous[key],
-    }));
+  // ==============================
+  // Toggle Topic
+  // ==============================
+  const toggleTopic = (index) => {
+    setOpenTopic((current) => (current === index ? null : index));
   };
 
-  const getPlatform = (problem) => {
-    const platform = problem.platform?.toLowerCase()?.replace(/\s+/g, "") || "";
+  // ==============================
+  // Toggle Problem
+  // ==============================
+  const toggleProblem = (link) => {
+    setCompleted((current) => {
+      const updated = new Set(current);
+
+      if (updated.has(link)) {
+        updated.delete(link);
+      } else {
+        updated.add(link);
+      }
+
+      localStorage.setItem(
+        "beginnerSolvedProblems",
+        JSON.stringify([...updated])
+      );
+
+      return updated;
+    });
+  };
+
+  // ==============================
+  // Platform Logo
+  // ==============================
+  const getPlatform = (platform) => {
+    const normalized =
+      platform?.toLowerCase()?.replace(/[\s+_-]/g, "") || "";
 
     return (
-      platformData[platform] || {
-        name: problem.platform || "Platform",
+      platformData[normalized] || {
+        name: platform || "Platform",
         logo: null,
       }
     );
   };
 
+  // ==============================
+  // Loading
+  // ==============================
   if (loading) {
     return (
       <DashboardLayout>
@@ -87,6 +143,9 @@ function Beginner() {
     );
   }
 
+  // ==============================
+  // Error
+  // ==============================
   if (error) {
     return (
       <DashboardLayout>
@@ -101,18 +160,34 @@ function Beginner() {
 
   const topics = data?.problems || [];
 
+  // ==============================
+  // Total Problems
+  // ==============================
   const totalProblems = topics.reduce(
     (total, topic) => total + (topic.problems?.length || 0),
-    0,
+    0
   );
 
-  const completedCount = Object.values(completed).filter(Boolean).length;
+  // ==============================
+  // Total Solved
+  // ==============================
+  const solvedCount = topics.reduce((total, topic) => {
+    return (
+      total +
+      (topic.problems || []).filter((problem) =>
+        completed.has(problem.link)
+      ).length
+    );
+  }, 0);
 
   return (
     <DashboardLayout>
       <div className="mx-auto w-full max-w-6xl">
-        {/* Header */}
-        <div className="mb-7">
+
+        {/* =========================================
+            Header
+        ========================================= */}
+        <div className="mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-green-500">
             DSA
           </p>
@@ -122,11 +197,11 @@ function Beginner() {
           </h2>
 
           <p className="mt-3 max-w-2xl text-sm leading-6 text-gray-500 sm:text-base">
-            Start with fundamental DSA problems and build your problem-solving
-            foundation.
+            Start with fundamental DSA problems and build your
+            problem-solving foundation.
           </p>
 
-          <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-500">
+          <div className="mt-5 flex flex-wrap items-center gap-4 text-xs text-gray-500">
             <span>{totalProblems} Problems</span>
 
             <span className="text-gray-700">•</span>
@@ -135,149 +210,252 @@ function Beginner() {
 
             <span className="text-gray-700">•</span>
 
-            <span>{completedCount} Completed</span>
+            <span>{solvedCount} Solved</span>
           </div>
         </div>
 
-        {/* Progress */}
-        {totalProblems > 0 && (
-          <div className="mb-6 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3">
-            <div className="mb-2 flex items-center justify-between text-xs">
-              <span className="text-gray-500">Progress</span>
-
-              <span className="font-medium text-green-500">
-                {completedCount}/{totalProblems}
-              </span>
-            </div>
-
-            <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
-              <div
-                className="h-full rounded-full bg-green-500 transition-all duration-300"
-                style={{
-                  width: `${(completedCount / totalProblems) * 100}%`,
-                }}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Topics */}
-        <div className="space-y-5">
-          {topics.map((topic, topicIndex) => {
+        {/* =========================================
+            Topics
+        ========================================= */}
+        <div className="space-y-3">
+          {topics.map((topic, index) => {
             const problems = topic.problems || [];
 
+            // Problems solved in this topic
+            const topicSolvedCount = problems.filter((problem) =>
+              completed.has(problem.link)
+            ).length;
+
+            // Is topic open?
+            const isOpen = openTopic === index;
+
+            // Is entire topic completed?
+            const isCompleted =
+              problems.length > 0 &&
+              topicSolvedCount === problems.length;
+
+            // Progress percentage
+            const progressPercentage = problems.length
+              ? (topicSolvedCount / problems.length) * 100
+              : 0;
+
             return (
-              <section
-                key={topic.slug || topic.name || topicIndex}
-                className="overflow-hidden rounded-xl border border-gray-800 bg-gray-900"
+              <div
+                key={topic.slug || topic.name || topic.topic || index}
+                className={`overflow-hidden rounded-2xl border bg-gray-900 transition-all ${
+                  isCompleted
+                    ? "border-green-500/40"
+                    : "border-gray-800"
+                }`}
               >
-                {/* Topic header */}
-                <div className="flex items-center justify-between border-b border-gray-800 px-4 py-3 sm:px-5">
-                  <div>
-                    <h3 className="text-sm font-semibold text-white sm:text-base">
-                      {topic.name || topic.title || "Topic"}
-                    </h3>
+                {/* =====================================
+                    Topic Header
+                ===================================== */}
+                <button
+                  type="button"
+                  onClick={() => toggleTopic(index)}
+                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:bg-gray-800/40 sm:px-6"
+                >
+                  {/* Left Side */}
+                  <div className="flex min-w-0 items-center gap-4">
 
-                    <p className="mt-0.5 text-xs text-gray-600">
-                      {problems.length}{" "}
-                      {problems.length === 1 ? "Problem" : "Problems"}
-                    </p>
-                  </div>
-                </div>
+                    {/* Topic Number */}
+                    <div
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
+                        isCompleted
+                          ? "bg-green-500 text-gray-950"
+                          : "bg-gray-800 text-gray-300"
+                      }`}
+                    >
+                      {isCompleted ? "✓" : index + 1}
+                    </div>
 
-                {/* Problems */}
-                <div>
-                  {problems.map((problem, problemIndex) => {
-                    const key = `${topicIndex}-${problemIndex}`;
-                    const isCompleted = completed[key];
-                    const platform = getPlatform(problem);
-
-                    return (
-                      <div
-                        key={problem._id || problem.id || key}
-                        className={`group flex items-center gap-3 border-b border-gray-800 px-4 py-2.5 transition-colors last:border-b-0 sm:px-5 sm:py-3 ${
+                    {/* Topic Info */}
+                    <div className="min-w-0">
+                      <h3
+                        className={`truncate text-sm font-semibold sm:text-base ${
                           isCompleted
-                            ? "bg-green-500/[0.03]"
-                            : "hover:bg-gray-800/40"
+                            ? "text-green-400"
+                            : "text-white"
                         }`}
                       >
-                        {/* Checkbox */}
-                        <button
-                          type="button"
-                          onClick={() => toggleCompleted(key)}
-                          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border transition ${
-                            isCompleted
-                              ? "border-green-500 bg-green-500 text-gray-950"
-                              : "border-gray-600 hover:border-green-500"
-                          }`}
-                          aria-label={
-                            isCompleted
-                              ? "Mark as incomplete"
-                              : "Mark as completed"
-                          }
-                        >
-                          {isCompleted && (
-                            <span className="text-xs font-bold">✓</span>
-                          )}
-                        </button>
-                        {/* Number */}
-                        <span className="w-7 shrink-0 text-xs text-gray-600">
-                          {String(problemIndex + 1).padStart(2, "0")}
-                        </span>
-                        {/* Problem name */}
-                        <div className="min-w-0 flex-1">
-                          <p
-                            className={`truncate text-sm font-medium transition ${
-                              isCompleted
-                                ? "text-gray-500 line-through"
-                                : "text-gray-200 group-hover:text-white"
-                            }`}
-                          >
-                            {problem.name ||
-                              problem.title ||
-                              problem.question ||
-                              `Problem ${problemIndex + 1}`}
-                          </p>
-                        </div>
-                        {/* Platform logo */}
-                        <a
-                          href={problem.link || problem.url || "#"}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(event) => event.stopPropagation()}
-                          title={`Open on ${platform.name}`}
-                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-950 transition hover:border-green-500"
-                        >
-                          {platform.logo ? (
-                            <img
-                              src={platform.logo}
-                              alt={platform.name}
-                              className="h-6 w-6 rounded-md object-contain"
-                            />
-                          ) : (
-                            <span className="text-[10px] font-bold text-gray-400">
-                              ↗
-                            </span>
-                          )}
-                        </a>
+                        {topic.name ||
+                          topic.title ||
+                          topic.topic ||
+                          "Topic"}
+                      </h3>
+
+                      <p className="mt-1 text-xs text-gray-500">
+                        {topicSolvedCount} / {problems.length} solved
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* =====================================
+                      Right Side
+                  ===================================== */}
+                  <div className="flex shrink-0 items-center gap-4">
+
+                    {/* Progress Bar */}
+                    <div className="hidden w-24 sm:block">
+                      <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
+                        <div
+                          className="h-full rounded-full bg-green-500 transition-all duration-300"
+                          style={{
+                            width: `${progressPercentage}%`,
+                          }}
+                        />
                       </div>
-                    );
-                  })}
-                </div>
-              </section>
+                    </div>
+
+                    {/* Problem Count */}
+                    <span className="hidden text-xs text-gray-500 sm:block">
+                      {problems.length}{" "}
+                      {problems.length === 1
+                        ? "Problem"
+                        : "Problems"}
+                    </span>
+
+                    {/* Arrow */}
+                    <span
+                      className={`text-lg text-gray-500 transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      ↓
+                    </span>
+                  </div>
+                </button>
+
+                {/* =====================================
+                    Problems
+                ===================================== */}
+                {isOpen && (
+                  <div className="border-t border-gray-800">
+                    {problems.map((problem, problemIndex) => {
+                      const problemLink =
+                        problem.link || problem.url || "";
+
+                      const isSolved = completed.has(problemLink);
+
+                      const platform = getPlatform(
+                        problem.platform
+                      );
+
+                      return (
+                        <div
+                          key={
+                            problem._id ||
+                            problem.id ||
+                            problemLink ||
+                            problemIndex
+                          }
+                          className={`group border-b border-gray-800 px-4 py-2.5 transition-colors last:border-b-0 sm:px-6 sm:py-3 ${
+                            isSolved
+                              ? "bg-gray-900/60"
+                              : "hover:bg-gray-800/40"
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+
+                            {/* Checkbox */}
+                            <button
+                              type="button"
+                              onClick={() =>
+                                toggleProblem(problemLink)
+                              }
+                              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
+                                isSolved
+                                  ? "border-green-500 bg-green-500"
+                                  : "border-gray-600 bg-gray-950 hover:border-green-500"
+                              }`}
+                              aria-label={
+                                isSolved
+                                  ? "Mark as unsolved"
+                                  : "Mark as solved"
+                              }
+                            >
+                              {isSolved && (
+                                <span className="text-sm font-bold text-gray-950">
+                                  ✓
+                                </span>
+                              )}
+                            </button>
+
+                            {/* Number */}
+                            <span className="w-5 shrink-0 text-xs text-gray-600">
+                              {String(problemIndex + 1).padStart(
+                                2,
+                                "0"
+                              )}
+                            </span>
+
+                            {/* Problem Name */}
+                            <a
+                              href={problemLink || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`min-w-0 flex-1 text-sm transition-colors ${
+                                isSolved
+                                  ? "text-gray-600 line-through"
+                                  : "text-gray-300 group-hover:text-white"
+                              }`}
+                            >
+                              <span className="block truncate">
+                                {problem.name ||
+                                  problem.title ||
+                                  problem.question ||
+                                  `Problem ${
+                                    problemIndex + 1
+                                  }`}
+                              </span>
+                            </a>
+
+                            {/* Platform Logo */}
+                            <a
+                              href={problemLink || "#"}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={`Open on ${platform.name}`}
+                              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-950 transition-all hover:border-green-500"
+                            >
+                              {platform.logo ? (
+                                <img
+                                  src={platform.logo}
+                                  alt={platform.name}
+                                  className="h-6 w-6 rounded-md object-contain"
+                                />
+                              ) : (
+                                <span className="text-xs text-gray-400">
+                                  ↗
+                                </span>
+                              )}
+                            </a>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
 
+        {/* =========================================
+            Empty State
+        ========================================= */}
         {topics.length === 0 && (
-          <div className="rounded-xl border border-gray-800 bg-gray-900 p-8 text-center">
+          <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6 text-center">
             <p className="text-sm text-gray-500">
               No beginner problems available.
             </p>
           </div>
         )}
 
-        {/* Back */}
+        {/* =========================================
+            Back
+        ========================================= */}
         <div className="mt-5 pb-5">
           <Link
             to="/"
