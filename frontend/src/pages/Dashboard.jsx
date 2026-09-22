@@ -9,13 +9,13 @@ function Dashboard() {
   const { days } = useParams();
 
   const [challenge, setChallenge] = useState([]);
-  const [solvedProblems, setSolvedProblems] = useState(
-    new Set()
-  );
+  const [solvedProblems, setSolvedProblems] =
+    useState(new Set());
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [guestMessage, setGuestMessage] = useState("");
+  const [guestMessage, setGuestMessage] =
+    useState("");
 
   useEffect(() => {
     const fetchChallenge = async () => {
@@ -24,32 +24,34 @@ function Dashboard() {
         setError("");
         setGuestMessage("");
 
-        // Challenge is public
-        const challengeResponse = await axios.get(
-          `https://youchallengedsa.onrender.com/api/challenges/${days}`
-        );
+        const challengeResponse =
+          await axios.get(
+            `https://youchallengedsa.onrender.com/api/challenges/${days}`
+          );
 
         setChallenge(
-          challengeResponse.data.challenge
+          challengeResponse.data.challenge || []
         );
 
-        // Progress is optional
-        const token = localStorage.getItem("token");
+        const token =
+          localStorage.getItem("token");
 
         if (token) {
           try {
-            const progressResponse = await axios.get(
-              `https://youchallengedsa.onrender.com/api/progress/${days}`,
-              {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              }
-            );
+            const progressResponse =
+              await axios.get(
+                `https://youchallengedsa.onrender.com/api/progress/${days}`,
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              );
 
             setSolvedProblems(
               new Set(
-                progressResponse.data.solvedProblems
+                progressResponse.data
+                  .solvedProblems || []
               )
             );
           } catch (progressError) {
@@ -78,13 +80,15 @@ function Dashboard() {
     fetchChallenge();
   }, [days]);
 
-  const toggleProblem = async (problemLink) => {
-    const token = localStorage.getItem("token");
+  const toggleProblem = async (
+    problemLink
+  ) => {
+    const token =
+      localStorage.getItem("token");
 
     const isCurrentlySolved =
       solvedProblems.has(problemLink);
 
-    // Always allow checkbox interaction
     setSolvedProblems((previous) => {
       const updated = new Set(previous);
 
@@ -97,7 +101,6 @@ function Dashboard() {
       return updated;
     });
 
-    // Guest user
     if (!token) {
       setGuestMessage(
         "Login to save your progress."
@@ -110,7 +113,6 @@ function Dashboard() {
       return;
     }
 
-    // Logged-in user → save progress
     try {
       await axios.put(
         `https://youchallengedsa.onrender.com/api/progress/${days}`,
@@ -127,7 +129,6 @@ function Dashboard() {
     } catch (error) {
       console.error(error);
 
-      // Revert checkbox if saving failed
       setSolvedProblems((previous) => {
         const reverted = new Set(previous);
 
@@ -147,18 +148,42 @@ function Dashboard() {
     }
   };
 
+  /*
+   * Count DSA + SQL
+   */
   const totalProblems = challenge.reduce(
-    (total, day) =>
-      total + day.problems.length,
+    (total, day) => {
+      const dsaCount =
+        day.problems?.length || 0;
+
+      const sqlCount =
+        day.sql?.length || 0;
+
+      return total + dsaCount + sqlCount;
+    },
     0
   );
 
   const solvedCount = solvedProblems.size;
 
-  const completedDays = challenge.filter((day) =>
-    day.problems.every((problem) =>
-      solvedProblems.has(problem.link)
-    )
+  /*
+   * A day is completed only when
+   * BOTH DSA and SQL are completed.
+   */
+  const completedDays = challenge.filter(
+    (day) => {
+      const allProblems = [
+        ...(day.problems || []),
+        ...(day.sql || []),
+      ];
+
+      return (
+        allProblems.length > 0 &&
+        allProblems.every((problem) =>
+          solvedProblems.has(problem.link)
+        )
+      );
+    }
   ).length;
 
   return (
@@ -167,23 +192,23 @@ function Dashboard() {
 
         {/* Header */}
         <div className="mb-6 sm:mb-8">
-
           <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 <span className="text-white">
                   YouChallenge
                 </span>
+
                 <span className="text-green-500">
                   DSA
                 </span>
               </h2>
 
               <div className="mt-3 flex items-center gap-3">
-                <div className="h-px w-8 sm:w-10 bg-green-500" />
+                <div className="h-px w-8 bg-green-500 sm:w-10" />
 
-                <p className="text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-widest">
+                <p className="text-xs font-medium uppercase tracking-widest text-gray-500 sm:text-sm">
                   {days} Days Challenge
                 </p>
               </div>
@@ -192,39 +217,47 @@ function Dashboard() {
             {/* Stats */}
             <div className="grid w-full grid-cols-2 gap-3 lg:w-auto">
 
-              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 sm:px-5 py-3 lg:min-w-[130px]">
+              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-[140px]">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
                   Problems
                 </p>
 
-                <p className="mt-1 text-lg sm:text-xl font-bold text-white">
+                <p className="mt-1 text-lg font-bold text-white sm:text-xl">
                   <span className="text-green-500">
                     {solvedCount}
                   </span>
 
                   <span className="text-gray-600">
-                    {" "}/{" "}
+                    {" / "}
                   </span>
 
                   {totalProblems}
                 </p>
+
+                <p className="mt-0.5 text-[10px] text-gray-600">
+                  DSA + SQL
+                </p>
               </div>
 
-              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 sm:px-5 py-3 lg:min-w-[130px]">
+              <div className="min-w-0 rounded-xl border border-gray-800 bg-gray-900 px-4 py-3 lg:min-w-[140px]">
                 <p className="text-xs uppercase tracking-wider text-gray-500">
                   Days
                 </p>
 
-                <p className="mt-1 text-lg sm:text-xl font-bold text-white">
+                <p className="mt-1 text-lg font-bold text-white sm:text-xl">
                   <span className="text-green-500">
                     {completedDays}
                   </span>
 
                   <span className="text-gray-600">
-                    {" "}/{" "}
+                    {" / "}
                   </span>
 
                   {days}
+                </p>
+
+                <p className="mt-0.5 text-[10px] text-gray-600">
+                  completed
                 </p>
               </div>
 
@@ -232,7 +265,7 @@ function Dashboard() {
           </div>
         </div>
 
-        {/* Guest message */}
+        {/* Guest Message */}
         {guestMessage && (
           <div className="fixed bottom-5 left-1/2 z-[100] -translate-x-1/2 rounded-xl border border-gray-700 bg-gray-900 px-5 py-3 shadow-2xl">
             <p className="whitespace-nowrap text-sm text-gray-300">
@@ -268,7 +301,9 @@ function Dashboard() {
                 key={day.day}
                 day={day}
                 solvedProblems={solvedProblems}
-                onToggleProblem={toggleProblem}
+                onToggleProblem={
+                  toggleProblem
+                }
               />
             ))}
 

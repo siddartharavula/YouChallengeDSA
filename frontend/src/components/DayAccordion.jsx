@@ -6,26 +6,38 @@ function DayAccordion({
   onToggleProblem,
 }) {
   const [open, setOpen] = useState(false);
-  const [sqlOpen, setSqlOpen] = useState(true);
+  const [dsaOpen, setDsaOpen] = useState(true);
+  const [sqlOpen, setSqlOpen] = useState(false);
 
   const dsaProblems = day.problems || [];
   const sqlProblems = day.sql || [];
 
-  const allProblems = [...dsaProblems, ...sqlProblems];
+  const allProblems = [
+    ...dsaProblems,
+    ...sqlProblems,
+  ];
 
-  const completedProblems = allProblems.filter((problem) =>
+  const dsaSolved = dsaProblems.filter((problem) =>
+    solvedProblems.has(problem.link)
+  ).length;
+
+  const sqlSolved = sqlProblems.filter((problem) =>
     solvedProblems.has(problem.link)
   ).length;
 
   const totalProblems = allProblems.length;
 
-  const isDayCompleted =
-    totalProblems > 0 && completedProblems === totalProblems;
+  const completedProblems =
+    dsaSolved + sqlSolved;
 
   const progress =
     totalProblems > 0
       ? (completedProblems / totalProblems) * 100
       : 0;
+
+  const isDayCompleted =
+    totalProblems > 0 &&
+    completedProblems === totalProblems;
 
   const getPlatformLogo = (platform) => {
     const normalized = platform
@@ -63,112 +75,120 @@ function DayAccordion({
     );
   };
 
-  const renderProblem = (problem, index, total) => {
-    const isSolved = solvedProblems.has(problem.link);
-    const platform = getPlatformLogo(problem.platform);
+  const renderProblem = (
+    problem,
+    index,
+    total
+  ) => {
+    const isSolved = solvedProblems.has(
+      problem.link
+    );
+
+    const platform = getPlatformLogo(
+      problem.platform
+    );
 
     return (
       <div
         key={problem.link}
-        className={`group px-4 py-2.5 transition-colors sm:px-6 sm:py-3 ${
+        className={`group flex items-center gap-3 px-4 py-2.5 transition-colors sm:px-5 sm:py-3 ${
           index !== total - 1
             ? "border-b border-gray-800"
             : ""
         } ${
           isSolved
-            ? "bg-gray-900/60"
+            ? "bg-green-500/[0.02]"
             : "hover:bg-gray-800/40"
         }`}
       >
-        <div className="flex items-center gap-3">
-          {/* Checkbox */}
-          <button
-            type="button"
-            onClick={() =>
-              onToggleProblem(problem.link)
-            }
-            className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
-              isSolved
-                ? "border-green-500 bg-green-500"
-                : "border-gray-600 bg-gray-950 hover:border-green-500"
-            }`}
-            aria-label={
-              isSolved
-                ? "Mark as unsolved"
-                : "Mark as solved"
-            }
-          >
-            {isSolved && (
-              <span className="text-sm font-bold text-gray-950">
-                ✓
-              </span>
-            )}
-          </button>
-
-          {/* Number */}
-          <span className="w-5 shrink-0 text-xs text-gray-600">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-
-          {/* Problem Name */}
-          <span
-            className={`min-w-0 flex-1 text-sm transition-colors ${
-              isSolved
-                ? "text-gray-600 line-through"
-                : "text-gray-300 group-hover:text-white"
-            }`}
-          >
-            <span className="block truncate">
-              {problem.name}
+        {/* Checkbox */}
+        <button
+          type="button"
+          onClick={() =>
+            onToggleProblem(problem.link)
+          }
+          className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
+            isSolved
+              ? "border-green-500 bg-green-500"
+              : "border-gray-600 bg-gray-950 hover:border-green-500"
+          }`}
+          aria-label={
+            isSolved
+              ? "Mark as unsolved"
+              : "Mark as solved"
+          }
+        >
+          {isSolved && (
+            <span className="text-sm font-bold text-gray-950">
+              ✓
             </span>
-          </span>
+          )}
+        </button>
 
-          {/* Platform */}
-          <a
-            href={problem.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(event) =>
-              event.stopPropagation()
-            }
-            title={`Open on ${platform.name}`}
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-950 transition-all hover:border-green-500"
-          >
-            {platform.logo ? (
-              <img
-                src={platform.logo}
-                alt={platform.name}
-                className="h-6 w-6 rounded-md object-contain"
-              />
-            ) : (
-              <span className="text-xs text-gray-400">
-                ↗
-              </span>
-            )}
-          </a>
-        </div>
+        {/* Number */}
+        <span className="w-6 shrink-0 text-xs text-gray-600">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Name */}
+        <span
+          className={`min-w-0 flex-1 text-sm ${
+            isSolved
+              ? "text-gray-600 line-through"
+              : "text-gray-300 group-hover:text-white"
+          }`}
+          title={problem.name}
+        >
+          <span className="block truncate">
+            {problem.name}
+          </span>
+        </span>
+
+        {/* Platform */}
+        <a
+          href={problem.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(event) =>
+            event.stopPropagation()
+          }
+          title={`Open on ${platform.name}`}
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-950 transition hover:border-green-500"
+        >
+          {platform.logo ? (
+            <img
+              src={platform.logo}
+              alt={platform.name}
+              className="h-6 w-6 rounded-md object-contain"
+            />
+          ) : (
+            <span className="text-xs text-gray-400">
+              ↗
+            </span>
+          )}
+        </a>
       </div>
     );
   };
 
   return (
     <div
-      className={`overflow-hidden rounded-2xl transition-all duration-200 ${
+      className={`overflow-hidden rounded-2xl border transition-all ${
         isDayCompleted
-          ? "border border-green-500/50 bg-gray-900"
-          : "border border-gray-800 bg-gray-900 hover:border-gray-700"
+          ? "border-green-500/40 bg-gray-900"
+          : "border-gray-800 bg-gray-900"
       }`}
     >
-      {/* Day Header */}
+      {/* ================= DAY HEADER ================= */}
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
+        className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-gray-800/30 sm:px-5 sm:py-4"
       >
-        <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+        <div className="flex min-w-0 items-center gap-3">
           {/* Day Number */}
           <div
-            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold sm:h-11 sm:w-11 ${
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
               isDayCompleted
                 ? "bg-green-500 text-gray-950"
                 : "bg-gray-800 text-gray-300"
@@ -179,7 +199,7 @@ function DayAccordion({
 
           {/* Day Info */}
           <div className="min-w-0">
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-2">
               <h3 className="text-sm font-semibold text-white sm:text-base">
                 Day {day.day}
               </h3>
@@ -191,14 +211,34 @@ function DayAccordion({
               )}
             </div>
 
-            <p className="mt-1 text-xs text-gray-500 sm:text-sm">
-              {completedProblems} / {totalProblems} solved
-            </p>
+            <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+              <span>
+                {dsaProblems.length} DSA
+              </span>
+
+              <span className="text-gray-700">
+                •
+              </span>
+
+              <span>
+                {sqlProblems.length} SQL
+              </span>
+
+              <span className="text-gray-700">
+                •
+              </span>
+
+              <span>
+                {completedProblems}/{totalProblems}
+                {" "}solved
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* Progress */}
+        {/* Right */}
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+          {/* Progress */}
           <div className="hidden w-24 sm:block">
             <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
               <div
@@ -210,8 +250,14 @@ function DayAccordion({
             </div>
           </div>
 
+          {/* Percentage */}
+          <span className="hidden w-10 text-right text-xs text-gray-500 sm:block">
+            {Math.round(progress)}%
+          </span>
+
+          {/* Arrow */}
           <span
-            className={`text-lg text-gray-500 transition-transform sm:text-xl ${
+            className={`text-lg text-gray-500 transition-transform ${
               open ? "rotate-180" : ""
             }`}
           >
@@ -220,34 +266,58 @@ function DayAccordion({
         </div>
       </button>
 
-      {/* Day Content */}
+      {/* ================= DAY CONTENT ================= */}
       {open && (
         <div className="border-t border-gray-800">
+
           {/* ================= DSA ================= */}
           {dsaProblems.length > 0 && (
             <div>
-              {/* DSA Header */}
-              <div className="flex items-center gap-3 border-b border-gray-800 bg-gray-950/60 px-4 py-3 sm:px-6">
-                <div className="h-2 w-2 rounded-full bg-green-500" />
+              <button
+                type="button"
+                onClick={() =>
+                  setDsaOpen(!dsaOpen)
+                }
+                className="flex w-full items-center justify-between border-b border-gray-800 bg-gray-950/70 px-4 py-3 text-left transition-colors hover:bg-gray-800/50 sm:px-5"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-green-500/10">
+                    <span className="text-xs font-bold text-green-500">
+                      D
+                    </span>
+                  </div>
 
-                <span className="text-xs font-semibold uppercase tracking-wider text-gray-300">
-                  DSA Problems
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-300">
+                      DSA Problems
+                    </p>
+
+                    <p className="mt-0.5 text-[11px] text-gray-600">
+                      {dsaSolved}/{dsaProblems.length} solved
+                    </p>
+                  </div>
+                </div>
+
+                <span
+                  className={`text-gray-500 transition-transform ${
+                    dsaOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  ↓
                 </span>
+              </button>
 
-                <span className="text-xs text-gray-600">
-                  {dsaProblems.filter((problem) =>
-                    solvedProblems.has(problem.link)
-                  ).length}
-                  /{dsaProblems.length}
-                </span>
-              </div>
-
-              {dsaProblems.map((problem, index) =>
-                renderProblem(
-                  problem,
-                  index,
-                  dsaProblems.length
-                )
+              {dsaOpen && (
+                <div>
+                  {dsaProblems.map(
+                    (problem, index) =>
+                      renderProblem(
+                        problem,
+                        index,
+                        dsaProblems.length
+                      )
+                  )}
+                </div>
               )}
             </div>
           )}
@@ -255,27 +325,29 @@ function DayAccordion({
           {/* ================= SQL ================= */}
           {sqlProblems.length > 0 && (
             <div className="border-t border-gray-800">
-              {/* SQL Dropdown Header */}
               <button
                 type="button"
-                onClick={() => setSqlOpen(!sqlOpen)}
-                className="flex w-full items-center justify-between bg-gray-950/60 px-4 py-3 text-left transition-colors hover:bg-gray-800/50 sm:px-6"
+                onClick={() =>
+                  setSqlOpen(!sqlOpen)
+                }
+                className="flex w-full items-center justify-between bg-gray-950/70 px-4 py-3 text-left transition-colors hover:bg-gray-800/50 sm:px-5"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-green-500/10">
+                    <span className="text-xs font-bold text-green-500">
+                      SQL
+                    </span>
+                  </div>
 
-                  <span className="text-xs font-semibold uppercase tracking-wider text-gray-300">
-                    SQL Problems
-                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-300">
+                      SQL Problems
+                    </p>
 
-                  <span className="text-xs text-gray-600">
-                    {
-                      sqlProblems.filter((problem) =>
-                        solvedProblems.has(problem.link)
-                      ).length
-                    }
-                    /{sqlProblems.length}
-                  </span>
+                    <p className="mt-0.5 text-[11px] text-gray-600">
+                      {sqlSolved}/{sqlProblems.length} solved
+                    </p>
+                  </div>
                 </div>
 
                 <span
@@ -287,15 +359,15 @@ function DayAccordion({
                 </span>
               </button>
 
-              {/* SQL Problems */}
               {sqlOpen && (
                 <div>
-                  {sqlProblems.map((problem, index) =>
-                    renderProblem(
-                      problem,
-                      index,
-                      sqlProblems.length
-                    )
+                  {sqlProblems.map(
+                    (problem, index) =>
+                      renderProblem(
+                        problem,
+                        index,
+                        sqlProblems.length
+                      )
                   )}
                 </div>
               )}
