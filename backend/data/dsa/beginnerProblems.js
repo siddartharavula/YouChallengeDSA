@@ -1,7 +1,6 @@
-const topics = [
+const beginnerProblems = [
   {
     topic: "Arrays",
-    slug: "arrays",
     problems: [
       {
         name: "Largest Element in an Array",
@@ -73,7 +72,6 @@ const topics = [
 
   {
     topic: "Matrix",
-    slug: "matrix",
     problems: [
       {
         name: "Row Sum in a Matrix",
@@ -105,7 +103,6 @@ const topics = [
 
   {
     topic: "Strings",
-    slug: "strings",
     problems: [
       {
         name: "Reverse a String",
@@ -125,39 +122,5 @@ const topics = [
     ],
   },
 ];
-const getPlatform = (url) => {
-  if (url.includes("leetcode.com")) return "leetcode";
-  if (url.includes("geeksforgeeks.org")) return "geeksforgeeks";
-  if (url.includes("smartinterviews.in")) return "smartinterviews";
-  return "unknown";
-};
-
-// Remove duplicates while preserving first occurrence.
-const seen = new Set();
-
-const beginnerProblems = topics.map(({ topic, slug, problems }) => ({
-  topic,
-  slug,
-
-  problems: problems
-    .filter((problem) => {
-      const normalized = problem.link
-        .replace(/\/description\/?$/, "")
-        .replace(/\/+$/, "")
-        .toLowerCase();
-
-      if (seen.has(normalized)) {
-        return false;
-      }
-
-      seen.add(normalized);
-      return true;
-    })
-    .map((problem) => ({
-      name: problem.name,
-      link: problem.link,
-      platform: getPlatform(problem.link),
-    })),
-}));
 
 module.exports = beginnerProblems;
