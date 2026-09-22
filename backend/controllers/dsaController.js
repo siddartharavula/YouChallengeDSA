@@ -39,7 +39,6 @@ const getBeginnerProblems = (req, res) => {
   try {
     res.status(200).json({
       title: "DSA Beginner",
-      count: totalProblems,
       problems: beginnerProblems,
     });
   } catch (error) {
