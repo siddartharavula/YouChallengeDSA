@@ -38,6 +38,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Combine Two Tables",
+        link: "https://leetcode.com/problems/combine-two-tables/",
+        platform: "leetcode",
+      },
+      {
+        name: "Employees Earning More Than Their Managers",
+        link: "https://leetcode.com/problems/employees-earning-more-than-their-managers/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -71,6 +83,18 @@ const challenge = [
       {
         name: "Delete Operation For Two Strings",
         link: "https://leetcode.com/problems/delete-operation-for-two-strings/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Duplicate Emails",
+        link: "https://leetcode.com/problems/duplicate-emails/",
+        platform: "leetcode",
+      },
+      {
+        name: "Customers Who Never Order",
+        link: "https://leetcode.com/problems/customers-who-never-order/",
         platform: "leetcode",
       },
     ],
@@ -115,6 +139,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Delete Duplicate Emails",
+        link: "https://leetcode.com/problems/delete-duplicate-emails/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rising Temperature",
+        link: "https://leetcode.com/problems/rising-temperature/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -131,7 +167,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Path In Matrix",
+        name: "Path In Matrix3805",
         link: "https://www.geeksforgeeks.org/problems/path-in-matrix3805/1",
         platform: "geeksforgeeks",
       },
@@ -147,8 +183,20 @@ const challenge = [
       },
       {
         name: "Longest Palindromic Substring",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-palindromic-substring?page=0&pageSize=10&scoreFilter=100&tagFilter=STRING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-palindromic-substring?page=0",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "Game Play Analysis I",
+        link: "https://leetcode.com/problems/game-play-analysis-i/",
+        platform: "leetcode",
+      },
+      {
+        name: "Find Customer Referee",
+        link: "https://leetcode.com/problems/find-customer-referee/",
+        platform: "leetcode",
       },
     ],
   },
@@ -184,6 +232,18 @@ const challenge = [
       {
         name: "Linked List Cycle",
         link: "https://leetcode.com/problems/linked-list-cycle/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Customer Placing the Largest Number of Orders",
+        link: "https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/",
+        platform: "leetcode",
+      },
+      {
+        name: "Big Countries",
+        link: "https://leetcode.com/problems/big-countries/",
         platform: "leetcode",
       },
     ],
@@ -228,6 +288,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Classes With at Least 5 Students",
+        link: "https://leetcode.com/problems/classes-with-at-least-5-students/",
+        platform: "leetcode",
+      },
+      {
+        name: "Sales Person",
+        link: "https://leetcode.com/problems/sales-person/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -260,8 +332,20 @@ const challenge = [
       },
       {
         name: "Longest Path In Graph",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-path-in-graph?page=0&pageSize=10&tagFilter=GRAPHS&tagFilter=GRAPH%20COLORING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-path-in-graph?page=0&pageSize=10",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "Not Boring Movies",
+        link: "https://leetcode.com/problems/not-boring-movies/",
+        platform: "leetcode",
+      },
+      {
+        name: "Swap Sex of Employees",
+        link: "https://leetcode.com/problems/swap-sex-of-employees/",
+        platform: "leetcode",
       },
     ],
   },
@@ -305,6 +389,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Actors and Directors Who Cooperated At Least Three Times",
+        link: "https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/",
+        platform: "leetcode",
+      },
+      {
+        name: "Sales Analysis III",
+        link: "https://leetcode.com/problems/sales-analysis-iii/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -336,7 +432,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Longest Bitonic Subsequence",
+        name: "Longest Bitonic Subsequence0824",
         link: "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1",
         platform: "geeksforgeeks",
       },
@@ -344,6 +440,18 @@ const challenge = [
         name: "Smaller Elements",
         link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/smaller-elements?page=5&pageSize=10",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "User Activity for the Past 30 Days I",
+        link: "https://leetcode.com/problems/user-activity-for-the-past-30-days-i/",
+        platform: "leetcode",
+      },
+      {
+        name: "Article Views I",
+        link: "https://leetcode.com/problems/article-views-i/",
+        platform: "leetcode",
       },
     ],
   },
@@ -379,6 +487,18 @@ const challenge = [
       {
         name: "Symmetric Tree",
         link: "https://leetcode.com/problems/symmetric-tree/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Reformat Department Table",
+        link: "https://leetcode.com/problems/reformat-department-table/",
+        platform: "leetcode",
+      },
+      {
+        name: "Top Travellers",
+        link: "https://leetcode.com/problems/top-travellers/",
         platform: "leetcode",
       },
     ],
@@ -418,6 +538,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Group Sold Products By The Date",
+        link: "https://leetcode.com/problems/group-sold-products-by-the-date/",
+        platform: "leetcode",
+      },
+      {
+        name: "Patients With a Condition",
+        link: "https://leetcode.com/problems/patients-with-a-condition/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -451,6 +583,18 @@ const challenge = [
       {
         name: "Check If Array Is Sorted And Rotated",
         link: "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Customer Who Visited but Did Not Make Any Transactions",
+        link: "https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/",
+        platform: "leetcode",
+      },
+      {
+        name: "Bank Account Summary II",
+        link: "https://leetcode.com/problems/bank-account-summary-ii/",
         platform: "leetcode",
       },
     ],
@@ -491,8 +635,20 @@ const challenge = [
       },
       {
         name: "Sum of XOR of Pairs",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/sum-of-xor-of-pairs?page=1&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/sum-of-xor-of-pairs?page=1&pageSize=10",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "Fix Names in a Table",
+        link: "https://leetcode.com/problems/fix-names-in-a-table/",
+        platform: "leetcode",
+      },
+      {
+        name: "Daily Leads and Partners",
+        link: "https://leetcode.com/problems/daily-leads-and-partners/",
+        platform: "leetcode",
       },
     ],
   },
@@ -536,6 +692,18 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Find Followers Count",
+        link: "https://leetcode.com/problems/find-followers-count/",
+        platform: "leetcode",
+      },
+      {
+        name: "Find Total Time Spent by Each Employee",
+        link: "https://leetcode.com/problems/find-total-time-spent-by-each-employee/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -548,7 +716,7 @@ const challenge = [
       },
       {
         name: "Minimum Insertion Steps To Make A String Palindrome",
-        link: "https://leetcode.com/problems/minimum-insertion-steps-to-make-string-palindrome/",
+        link: "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/",
         platform: "leetcode",
       },
       {
@@ -569,6 +737,18 @@ const challenge = [
       {
         name: "Assign Cookies",
         link: "https://leetcode.com/problems/assign-cookies/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Recyclable and Low Fat Products",
+        link: "https://leetcode.com/problems/recyclable-and-low-fat-products/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rearrange Products Table",
+        link: "https://leetcode.com/problems/rearrange-products-table/",
         platform: "leetcode",
       },
     ],
@@ -608,6 +788,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Calculate Special Bonus",
+        link: "https://leetcode.com/problems/calculate-special-bonus/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -640,8 +827,15 @@ const challenge = [
       },
       {
         name: "Longest Substring Without Vowels",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-substring-without-vowels?page=0&pageSize=10&scoreFilter=50&tagFilter=STRING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-substring-without-vowels?page=0",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "The Latest Login in 2020",
+        link: "https://leetcode.com/problems/the-latest-login-in-2020/",
+        platform: "leetcode",
       },
     ],
   },
@@ -676,8 +870,15 @@ const challenge = [
       },
       {
         name: "X and Y Set Bits",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/x-and-y-set-bits?page=0&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/x-and-y-set-bits?page=0&pageSize=10&tagFilter=BIT%20MANIPULATION",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "Employees With Missing Information",
+        link: "https://leetcode.com/problems/employees-with-missing-information/",
+        platform: "leetcode",
       },
     ],
   },
@@ -721,6 +922,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Second Highest Salary",
+        link: "https://leetcode.com/problems/second-highest-salary/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -747,7 +955,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Max Sum Subarray of size K",
+        name: "Max Sum Subarray Of Size K5313",
         link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
         platform: "geeksforgeeks",
       },
@@ -757,9 +965,16 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Find Kth Rotation",
+        name: "Rotation4723",
         link: "https://www.geeksforgeeks.org/problems/rotation4723/1",
         platform: "geeksforgeeks",
+      },
+    ],
+    sql: [
+      {
+        name: "Nth Highest Salary",
+        link: "https://leetcode.com/problems/nth-highest-salary/",
+        platform: "leetcode",
       },
     ],
   },
@@ -798,6 +1013,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Rank Scores",
+        link: "https://leetcode.com/problems/rank-scores/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -824,13 +1046,20 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Implementing Floyd Warshall",
+        name: "Implementing Floyd Warshall2042",
         link: "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1",
         platform: "geeksforgeeks",
       },
       {
         name: "Rotate List",
         link: "https://leetcode.com/problems/rotate-list/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Consecutive Numbers",
+        link: "https://leetcode.com/problems/consecutive-numbers/",
         platform: "leetcode",
       },
     ],
@@ -870,6 +1099,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Department Highest Salary",
+        link: "https://leetcode.com/problems/department-highest-salary/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -903,6 +1139,13 @@ const challenge = [
       {
         name: "Minimum Bit Flips To Convert Number",
         link: "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Tree Node",
+        link: "https://leetcode.com/problems/tree-node/",
         platform: "leetcode",
       },
     ],
@@ -947,6 +1190,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Exchange Seats",
+        link: "https://leetcode.com/problems/exchange-seats/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -983,13 +1233,20 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Market Analysis I",
+        link: "https://leetcode.com/problems/market-analysis-i/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
     day: 27,
     problems: [
       {
-        name: "Longest Increasing Subsequence",
+        name: "Longest Increasing Subsequence 1587115620",
         link: "https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1",
         platform: "geeksforgeeks",
       },
@@ -1016,6 +1273,13 @@ const challenge = [
       {
         name: "Next Greater Element Ii",
         link: "https://leetcode.com/problems/next-greater-element-ii/",
+        platform: "leetcode",
+      },
+    ],
+    sql: [
+      {
+        name: "Capital Gain/Loss",
+        link: "https://leetcode.com/problems/capital-gainloss/",
         platform: "leetcode",
       },
     ],
@@ -1055,6 +1319,13 @@ const challenge = [
         platform: "leetcode",
       },
     ],
+    sql: [
+      {
+        name: "Department Top Three Salaries",
+        link: "https://leetcode.com/problems/department-top-three-salaries/",
+        platform: "leetcode",
+      },
+    ],
   },
 
   {
@@ -1066,7 +1337,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Count Subsets with Sum",
+        name: "Perfect Sum Problem5633",
         link: "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
         platform: "geeksforgeeks",
       },
@@ -1087,8 +1358,15 @@ const challenge = [
       },
       {
         name: "Shortest Path Weighted",
-        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/shortest-path-weighted?page=0&pageSize=10&tagFilter=GRAPHS&tagFilter=GRAPH%20COLORING",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/shortest-path-weighted?page=0&pageSize=10",
         platform: "smartinterviews",
+      },
+    ],
+    sql: [
+      {
+        name: "Trips and Users",
+        link: "https://leetcode.com/problems/trips-and-users/",
+        platform: "leetcode",
       },
     ],
   },
@@ -1112,7 +1390,7 @@ const challenge = [
         platform: "leetcode",
       },
       {
-        name: "Missing Number In Array",
+        name: "Missing Number In Array1416",
         link: "https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1",
         platform: "geeksforgeeks",
       },
@@ -1125,6 +1403,13 @@ const challenge = [
         name: "Detect Cycle In An Undirected Graph",
         link: "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
         platform: "geeksforgeeks",
+      },
+    ],
+    sql: [
+      {
+        name: "Human Traffic of Stadium",
+        link: "https://leetcode.com/problems/human-traffic-of-stadium/",
+        platform: "leetcode",
       },
     ],
   },

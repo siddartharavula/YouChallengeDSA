@@ -28,7 +28,18 @@ const platformData = {
 
 function SQL() {
   const [problems, setProblems] = useState([]);
-  const [completed, setCompleted] = useState({});
+  const [completed, setCompleted] = useState(() => {
+    try {
+      return new Set(
+        JSON.parse(
+          localStorage.getItem("sqlSolvedProblems") || "[]"
+        )
+      );
+    } catch {
+      return new Set();
+    }
+  });
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -58,11 +69,23 @@ function SQL() {
     fetchSQL();
   }, []);
 
-  const toggleCompleted = (index) => {
-    setCompleted((previous) => ({
-      ...previous,
-      [index]: !previous[index],
-    }));
+  const toggleCompleted = (link) => {
+    setCompleted((previous) => {
+      const updated = new Set(previous);
+
+      if (updated.has(link)) {
+        updated.delete(link);
+      } else {
+        updated.add(link);
+      }
+
+      localStorage.setItem(
+        "sqlSolvedProblems",
+        JSON.stringify([...updated])
+      );
+
+      return updated;
+    });
   };
 
   const getPlatform = (problem) => {
@@ -79,14 +102,20 @@ function SQL() {
     );
   };
 
-  const completedCount =
-    Object.values(completed).filter(Boolean).length;
+  const completedCount = problems.filter((problem) =>
+    completed.has(problem.link)
+  ).length;
+
+  const progress =
+    problems.length > 0
+      ? (completedCount / problems.length) * 100
+      : 0;
 
   if (loading) {
     return (
       <DashboardLayout>
         <div className="mx-auto w-full max-w-6xl">
-          <div className="rounded-xl border border-gray-800 bg-gray-900 p-6">
+          <div className="rounded-2xl border border-gray-800 bg-gray-900 p-6">
             <p className="text-sm text-gray-500">
               Loading SQL problems...
             </p>
@@ -100,8 +129,10 @@ function SQL() {
     return (
       <DashboardLayout>
         <div className="mx-auto w-full max-w-6xl">
-          <div className="rounded-xl border border-red-900/50 bg-gray-900 p-5">
-            <p className="text-sm text-red-400">{error}</p>
+          <div className="rounded-2xl border border-red-900/50 bg-gray-900 p-5">
+            <p className="text-sm text-red-400">
+              {error}
+            </p>
           </div>
         </div>
       </DashboardLayout>
@@ -113,28 +144,34 @@ function SQL() {
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Header */}
-        <div className="mb-5">
+        <div className="mb-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-green-500">
             Practice
           </p>
 
-          <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
+          <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 SQL Practice
               </h1>
 
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-2 text-sm text-gray-500">
                 Practice SQL problems for interviews and placements.
               </p>
             </div>
 
-            <div className="text-right text-xs text-gray-500">
-              <span className="text-green-500">
+            <div className="text-right">
+              <p className="text-lg font-semibold text-white">
                 {completedCount}
-              </span>
-              {" / "}
-              {problems.length} completed
+                <span className="text-gray-600">
+                  {" "}
+                  / {problems.length}
+                </span>
+              </p>
+
+              <p className="text-xs text-gray-500">
+                completed
+              </p>
             </div>
           </div>
         </div>
@@ -148,31 +185,28 @@ function SQL() {
               </span>
 
               <span className="text-xs font-medium text-green-500">
-                {Math.round(
-                  (completedCount / problems.length) * 100
-                )}
-                %
+                {Math.round(progress)}%
               </span>
             </div>
 
-            <div className="h-1 overflow-hidden rounded-full bg-gray-800">
+            <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
               <div
                 className="h-full rounded-full bg-green-500 transition-all duration-300"
                 style={{
-                  width: `${
-                    (completedCount / problems.length) * 100
-                  }%`,
+                  width: `${progress}%`,
                 }}
               />
             </div>
           </div>
         )}
 
-        {/* Problem list */}
-        <div className="overflow-hidden rounded-xl border border-gray-800 bg-gray-900">
+        {/* SQL Problems */}
+        <div className="overflow-hidden rounded-2xl border border-gray-800 bg-gray-900">
           {problems.map((problem, index) => {
-            const isCompleted = Boolean(completed[index]);
-            const platform = getPlatform(problem);
+            const problemLink =
+              problem.link ||
+              problem.url ||
+              "#";
 
             const problemName =
               problem.name ||
@@ -180,99 +214,85 @@ function SQL() {
               problem.question ||
               `SQL Problem ${index + 1}`;
 
-            const problemLink =
-              problem.link ||
-              problem.url ||
-              "#";
+            const isCompleted =
+              completed.has(problemLink);
+
+            const platform = getPlatform(problem);
 
             return (
               <div
-                key={
-                  problem._id ||
-                  problem.id ||
-                  `sql-${index}`
-                }
-                className={`
-                  group flex items-center gap-3
-                  border-b border-gray-800
-                  px-4 py-2.5
-                  transition-colors
-                  last:border-b-0
-                  sm:px-5 sm:py-3
-                  ${
-                    isCompleted
-                      ? "bg-green-500/[0.03]"
-                      : "hover:bg-gray-800/40"
-                  }
-                `}
+                key={problemLink}
+                className={`group flex items-center gap-3 border-b border-gray-800 px-4 py-2.5 transition-colors last:border-b-0 sm:px-6 sm:py-3 ${
+                  isCompleted
+                    ? "bg-gray-900/60"
+                    : "hover:bg-gray-800/40"
+                }`}
               >
                 {/* Checkbox */}
                 <button
                   type="button"
-                  onClick={() => toggleCompleted(index)}
-                  className={`
-                    flex h-5 w-5 shrink-0
-                    items-center justify-center
-                    rounded border transition
-                    ${
-                      isCompleted
-                        ? "border-green-500 bg-green-500 text-gray-950"
-                        : "border-gray-600 hover:border-green-500"
-                    }
-                  `}
+                  onClick={() =>
+                    toggleCompleted(problemLink)
+                  }
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${
+                    isCompleted
+                      ? "border-green-500 bg-green-500"
+                      : "border-gray-600 bg-gray-950 hover:border-green-500"
+                  }`}
+                  aria-label={
+                    isCompleted
+                      ? "Mark as unsolved"
+                      : "Mark as solved"
+                  }
                 >
                   {isCompleted && (
-                    <span className="text-xs font-bold">
+                    <span className="text-sm font-bold text-gray-950">
                       ✓
                     </span>
                   )}
                 </button>
 
                 {/* Number */}
-                <span className="w-7 shrink-0 text-xs text-gray-600">
+                <span className="w-5 shrink-0 text-xs text-gray-600">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
                 {/* Question */}
-                <div className="min-w-0 flex-1">
-                  <p
-                    className={`
-                      truncate text-sm font-medium transition
-                      ${
-                        isCompleted
-                          ? "text-gray-500 line-through"
-                          : "text-gray-200 group-hover:text-white"
-                      }
-                    `}
-                    title={problemName}
-                  >
+                <a
+                  href={problemLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={problemName}
+                  className={`min-w-0 flex-1 text-sm transition-colors ${
+                    isCompleted
+                      ? "text-gray-600 line-through"
+                      : "text-gray-300 group-hover:text-white"
+                  }`}
+                >
+                  <span className="block truncate">
                     {problemName}
-                  </p>
-                </div>
+                  </span>
+                </a>
 
                 {/* Platform */}
                 <a
                   href={problemLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(event) =>
+                    event.stopPropagation()
+                  }
                   title={`Open on ${platform.name}`}
-                  className="
-                    flex h-8 w-8 shrink-0
-                    items-center justify-center
-                    rounded-lg border border-gray-700
-                    bg-gray-950
-                    transition
-                    hover:border-green-500
-                  "
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-950 transition-all hover:border-green-500"
                 >
                   {platform.logo ? (
                     <img
                       src={platform.logo}
                       alt={platform.name}
-                      className="h-5 w-5 rounded object-contain"
+                      className="h-6 w-6 rounded-md object-contain"
                     />
                   ) : (
-                    <span className="text-[10px] font-bold text-gray-400">
+                    <span className="text-xs text-gray-400">
                       ↗
                     </span>
                   )}
@@ -281,6 +301,7 @@ function SQL() {
             );
           })}
 
+          {/* Empty State */}
           {problems.length === 0 && (
             <div className="p-8 text-center">
               <p className="text-sm text-gray-500">
