@@ -25,8 +25,8 @@ function Beginner() {
         setError("");
 
         const response = await axios.get(
-          "https://youchallengedsa.onrender.com/api/dsa/beginner"
-        );
+  "http://localhost:5000/api/dsa/beginner"
+);
 
         setData(response.data);
       } catch (error) {

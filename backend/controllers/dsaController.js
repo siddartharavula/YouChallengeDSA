@@ -39,10 +39,11 @@ const getBeginnerProblems = (req, res) => {
   try {
     res.status(200).json({
       title: "DSA Beginner",
-      count: totalProblems,
+      
       problems: beginnerProblems,
     });
   } catch (error) {
+     console.error("BEGINNER API ERROR:", error);
     console.error(
       "Error fetching beginner problems:",
       error.message
