@@ -1,20 +1,31 @@
 import { Link, useLocation } from "react-router-dom";
-import { X, ChevronRight } from "lucide-react";
+import {
+  Home,
+  Code2,
+  Database,
+  Trophy,
+  X,
+} from "lucide-react";
 
 function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
 
   const challenges = [15, 30, 45];
 
-  const isActive = (path) => location.pathname === path;
+  const active = (path) => location.pathname === path;
 
-  const isDSAPracticeActive =
-    location.pathname === "/dsa/practice" ||
-    location.pathname.startsWith("/dsa/practice/");
+  const challengeActive = (days) =>
+    location.pathname === `/dashboard/${days}`;
+
+  const itemClass = (isActive) =>
+    `flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition ${
+      isActive
+        ? "bg-green-500 text-gray-950"
+        : "text-gray-400 hover:bg-gray-900 hover:text-white"
+    }`;
 
   return (
     <>
-      {/* Mobile overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 z-40 bg-black/60 md:hidden"
@@ -24,14 +35,10 @@ function Sidebar({ isOpen, onClose }) {
 
       <aside
         className={`
-          fixed md:static
-          top-0 left-0
-          z-50 md:z-auto
-          h-full md:h-full
-          w-64 shrink-0
-          border-r border-gray-800
-          bg-gray-950
+          fixed left-0 top-0 z-50 h-full w-64
+          border-r border-gray-800 bg-gray-950
           transition-transform duration-300
+          md:static md:z-auto
           ${
             isOpen
               ? "translate-x-0"
@@ -39,7 +46,6 @@ function Sidebar({ isOpen, onClose }) {
           }
         `}
       >
-        {/* Mobile header */}
         <div className="flex h-16 items-center justify-between border-b border-gray-800 px-5 md:hidden">
           <h2 className="text-lg font-bold">
             <span className="text-white">YouChallenge</span>
@@ -47,95 +53,59 @@ function Sidebar({ isOpen, onClose }) {
           </h2>
 
           <button
-            type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-900 hover:text-white"
+            className="rounded-lg p-2 text-gray-400 hover:bg-gray-900 hover:text-white"
           >
             <X size={20} />
           </button>
         </div>
 
-        {/* Sidebar content */}
         <div className="p-5">
-          {/* DSA */}
-          <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
-            DSA
+          {/* HOME */}
+          <Link
+            to="/"
+            onClick={onClose}
+            className={itemClass(active("/"))}
+          >
+            <Home size={17} />
+            Home
+          </Link>
+
+          {/* PRACTICE */}
+          <p className="mb-3 mt-7 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
+            Practice
           </p>
 
           <div className="space-y-1">
-            {/* Beginner */}
             <Link
               to="/dsa/beginner"
               onClick={onClose}
-              className={`
-                flex items-center justify-between
-                rounded-lg px-4 py-3
-                text-sm font-medium
-                transition
-                ${
-                  isActive("/dsa/beginner")
-                    ? "bg-green-500 text-gray-950"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
-                }
-              `}
+              className={itemClass(active("/dsa/beginner"))}
             >
-              <span>Beginner</span>
-
-              {isActive("/dsa/beginner") && (
-                <ChevronRight size={15} />
-              )}
+              <Code2 size={17} />
+              DSA Beginner
             </Link>
 
-            {/* DSA Practice */}
             <Link
               to="/dsa/practice"
               onClick={onClose}
-              className={`
-                flex items-center justify-between
-                rounded-lg px-4 py-3
-                text-sm font-medium
-                transition
-                ${
-                  isDSAPracticeActive
-                    ? "bg-green-500 text-gray-950"
-                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
-                }
-              `}
+              className={itemClass(active("/dsa/practice"))}
             >
-              <span>DSA Practice</span>
+              <Code2 size={17} />
+              DSA Practice
+            </Link>
 
-              {isDSAPracticeActive && (
-                <ChevronRight size={15} />
-              )}
+            <Link
+              to="/sql"
+              onClick={onClose}
+              className={itemClass(active("/sql"))}
+            >
+              <Database size={17} />
+              SQL Practice
             </Link>
           </div>
 
-          {/* SQL */}
-          <p className="mb-3 mt-7 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
-            SQL
-          </p>
-
-          <Link
-            to="/sql"
-            onClick={onClose}
-            className={`
-              flex items-center justify-between
-              rounded-lg px-4 py-3
-              text-sm font-medium
-              transition
-              ${
-                isActive("/sql")
-                  ? "bg-green-500 text-gray-950"
-                  : "text-gray-400 hover:bg-gray-900 hover:text-white"
-              }
-            `}
-          >
-            <span>SQL Practice</span>
-
-            {isActive("/sql") && <ChevronRight size={15} />}
-          </Link>
-
-          {/* Challenges */}
+          {/* CHALLENGES */}
           <p className="mb-3 mt-7 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
             Challenges
           </p>
@@ -146,23 +116,10 @@ function Sidebar({ isOpen, onClose }) {
                 key={days}
                 to={`/dashboard/${days}`}
                 onClick={onClose}
-                className={`
-                  flex items-center justify-between
-                  rounded-lg px-4 py-3
-                  text-sm font-medium
-                  transition
-                  ${
-                    isActive(`/dashboard/${days}`)
-                      ? "bg-green-500 text-gray-950"
-                      : "text-gray-400 hover:bg-gray-900 hover:text-white"
-                  }
-                `}
+                className={itemClass(challengeActive(days))}
               >
-                <span>{days} Days</span>
-
-                {isActive(`/dashboard/${days}`) && (
-                  <ChevronRight size={15} />
-                )}
+                <Trophy size={17} />
+                {days} Days Challenge
               </Link>
             ))}
           </div>

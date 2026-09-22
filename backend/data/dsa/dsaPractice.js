@@ -1,4 +1,4 @@
-const rawTopics = [
+const topics = [
   {
     topic: "Arrays",
     slug: "arrays",
@@ -10,6 +10,8 @@ const rawTopics = [
       "https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1",
       "https://leetcode.com/problems/next-permutation/description/",
       "https://leetcode.com/problems/max-consecutive-ones/description/",
+      "https://leetcode.com/problems/closest-prime-numbers-in-range/description/",
+      "https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1",
       "https://leetcode.com/problems/max-consecutive-ones-iii/",
       "https://leetcode.com/problems/sort-colors/description/",
       "https://leetcode.com/problems/fruit-into-baskets/description/",
@@ -17,20 +19,17 @@ const rawTopics = [
       "https://leetcode.com/problems/subarray-sum-equals-k/description/",
       "https://leetcode.com/problems/maximum-sum-circular-subarray/description/",
       "https://leetcode.com/problems/maximum-subarray/description/",
-      "https://leetcode.com/problems/subarray-sum-equals-k/",
       "https://leetcode.com/problems/minimum-size-subarray-sum/",
       "https://leetcode.com/problems/rearrange-array-elements-by-sign/description/",
       "https://leetcode.com/problems/count-number-of-nice-subarrays/description/",
       "https://leetcode.com/problems/set-matrix-zeroes/description/",
       "https://leetcode.com/problems/rotate-image/description/",
       "https://leetcode.com/problems/spiral-matrix/description/",
-      "https://leetcode.com/problems/middle-of-the-linked-list/description/",
       "https://leetcode.com/problems/3sum/description/",
       "https://leetcode.com/problems/maximum-product-subarray/description/",
       "https://leetcode.com/problems/container-with-most-water/description/",
       "https://leetcode.com/problems/sliding-window-maximum/description/",
       "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
-      "https://leetcode.com/problems/minimum-size-subarray-sum/description/",
       "https://leetcode.com/problems/merge-sorted-array/description/",
       "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/product-of-2-matrices?page=0&pageSize=10",
       "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/coin-game?page=1&pageSize=10",
@@ -77,7 +76,7 @@ const rawTopics = [
 
   {
     topic: "LinkedList",
-    slug: "linkedlist",
+    slug: "linked-list",
     links: [
       "https://leetcode.com/problems/middle-of-the-linked-list/description/",
       "https://leetcode.com/problems/reverse-linked-list/description/",
@@ -93,7 +92,7 @@ const rawTopics = [
 
   {
     topic: "Resursion",
-    slug: "resursion",
+    slug: "recursion",
     links: [
       "https://leetcode.com/problems/generate-parentheses/description/",
       "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/subsets-of-an-array?page=2&pageSize=10",
@@ -182,7 +181,7 @@ const rawTopics = [
 
   {
     topic: "Tress",
-    slug: "tress",
+    slug: "trees",
     links: [
       "https://leetcode.com/problems/binary-tree-level-order-traversal/description/",
       "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
@@ -246,7 +245,7 @@ const rawTopics = [
     topic: "Graphs",
     slug: "graphs",
     links: [
-      "https://leetcode.com/problems/number-of-provinces/#:~:text=A%20province%20is%20a%20group,the%20total%20number%20of%20provinces.",
+      "https://leetcode.com/problems/number-of-provinces/",
       "https://leetcode.com/problems/rotting-oranges/",
       "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
       "https://leetcode.com/problems/01-matrix/",
@@ -277,62 +276,64 @@ const rawTopics = [
   },
 ];
 
-function getPlatform(link) {
-  if (link.includes("leetcode.com")) {
-    return "leetcode";
+/*
+  Converts a URL into a readable problem name.
+  Example:
+  maximum-subarray -> Maximum Subarray
+*/
+const formatName = (url) => {
+  const cleanUrl = url.split("?")[0].replace(/\/+$/, "");
+
+  const parts = cleanUrl.split("/");
+  let slug = parts[parts.length - 1];
+
+  if (!slug || slug === "1") {
+    slug = parts[parts.length - 2];
   }
 
-  if (link.includes("geeksforgeeks.org")) {
-    return "geeksforgeeks";
-  }
+  return slug
+    .replace(/-\d+$/, "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
 
-  if (link.includes("smartinterviews.in")) {
-    return "smartinterviews";
-  }
+const getPlatform = (url) => {
+  if (url.includes("leetcode.com")) return "leetcode";
+  if (url.includes("geeksforgeeks.org")) return "geeksforgeeks";
+  if (url.includes("smartinterviews.in")) return "smartinterviews";
 
-  return "other";
-}
+  return "unknown";
+};
 
-function formatProblemName(link) {
-  try {
-    const url = new URL(link);
+/*
+  Remove duplicate links while preserving
+  the original order.
+*/
+const seen = new Set();
 
-    const parts = url.pathname
-      .split("/")
-      .filter(Boolean);
+const dsaPractice = topics.map(({ topic, slug, links }) => ({
+  topic,
+  slug,
 
-    let slug = parts[parts.length - 1];
+  problems: links
+    .filter((link) => {
+      const normalized = link
+        .replace(/\/description\/?$/, "")
+        .replace(/\/+$/, "")
+        .toLowerCase();
 
-    if (
-      slug === "description" ||
-      slug === "1" ||
-      /^\d+$/.test(slug)
-    ) {
-      slug = parts[parts.length - 2];
-    }
+      if (seen.has(normalized)) {
+        return false;
+      }
 
-    if (!slug) {
-      return "Problem";
-    }
-
-    return decodeURIComponent(slug)
-      .replace(/[-_]+/g, " ")
-      .replace(/\b\w/g, (char) => char.toUpperCase());
-  } catch (error) {
-    return "Problem";
-  }
-}
-
-const dsaPractice = rawTopics.map((topic) => ({
-  topic: topic.topic,
-  slug: topic.slug,
-
-  problems: topic.links.map((link, index) => ({
-    id: `${topic.slug}-${index + 1}`,
-    name: formatProblemName(link),
-    link,
-    platform: getPlatform(link),
-  })),
+      seen.add(normalized);
+      return true;
+    })
+    .map((link) => ({
+      name: formatName(link),
+      link,
+      platform: getPlatform(link),
+    })),
 }));
 
 module.exports = dsaPractice;
