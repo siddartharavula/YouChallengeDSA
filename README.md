@@ -12,7 +12,7 @@ The goal is simple: **practice DSA every day and stay consistent across differen
 
 ## 🌐 Live Application
 
-https://you-challenge-dsa.vercel.app/dashboard/15
+https://you-challenge-dsa.vercel.app/
 
 ## Run Locally
 
