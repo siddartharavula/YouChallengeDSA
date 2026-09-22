@@ -47,6 +47,7 @@ const getBeginnerProblems = (req, res) => {
       topics: beginnerProblems.length,
       count: totalProblems,
       problems: beginnerProblems,
+      message: "Beginner problems fetched successfully",
     });
   } catch (error) {
     console.error("Error fetching beginner problems:", error.message);

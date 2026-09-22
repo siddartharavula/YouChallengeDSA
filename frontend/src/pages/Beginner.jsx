@@ -38,7 +38,7 @@ function Beginner() {
         const response = await axios.get(
           "https://youchallengedsa.onrender.com/api/dsa/beginner",
         );
-
+        console.log("Beginner Problems Response:", response.data);
         setData(response.data);
       } catch (error) {
         console.log("ERROR:", error);
