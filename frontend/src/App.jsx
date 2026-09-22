@@ -5,8 +5,13 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 import Beginner from "./pages/Beginner";
+import DSA from "./pages/DSA";
+import DSATopic from "./pages/DSATopic";
+import SQL from "./pages/SQL";
+
+import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -15,47 +20,51 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* ================= HOME ================= */}
+        <Route path="/" element={<Home />} />
 
-        {/* Beginner Problems */}
+        {/* ================= DSA ================= */}
+        <Route path="/dsa" element={<DSA />} />
+
         <Route
-          path="/beginner"
+          path="/dsa/beginner"
           element={<Beginner />}
         />
 
-        {/* Dashboard Challenges */}
         <Route
-          path="/dashboard/:days"
-          element={<Dashboard />}
-        />
-
-        {/* Authentication */}
-        <Route
-          path="/login"
-          element={<Login />}
+          path="/dsa/practice"
+          element={<DSA />}
         />
 
         <Route
-          path="/register"
-          element={<Register />}
+          path="/dsa/practice/:topic"
+          element={<DSATopic />}
         />
 
-        {/* Profile */}
+        {/* Old beginner URL */}
         <Route
-          path="/profile"
-          element={<Profile />}
-        />
-
-        {/* Default */}
-        <Route
-          path="/"
+          path="/beginner"
           element={
             <Navigate
-              to="/dashboard/15"
+              to="/dsa/beginner"
               replace
             />
           }
         />
 
+        {/* ================= SQL ================= */}
+        <Route
+          path="/sql"
+          element={<SQL />}
+        />
+
+        {/* ================= CHALLENGES ================= */}
+        <Route
+          path="/dashboard/:days"
+          element={<Dashboard />}
+        />
+
+        {/* Old dashboard URL */}
         <Route
           path="/dashboard"
           element={
@@ -66,17 +75,33 @@ function App() {
           }
         />
 
-        {/* Unknown routes */}
+        {/* ================= AUTH ================= */}
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+
+        <Route
+          path="/register"
+          element={<Register />}
+        />
+
+        {/* ================= PROFILE ================= */}
+        <Route
+          path="/profile"
+          element={<Profile />}
+        />
+
+        {/* ================= UNKNOWN ================= */}
         <Route
           path="*"
           element={
             <Navigate
-              to="/dashboard/15"
+              to="/"
               replace
             />
           }
         />
-
       </Routes>
     </BrowserRouter>
   );

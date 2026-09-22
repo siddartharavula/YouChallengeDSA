@@ -1,15 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
-import { X } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 
 function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
 
   const challenges = [15, 30, 45];
 
-  const isChallengeActive = (days) =>
-    location.pathname === `/dashboard/${days}`;
+  const isActive = (path) => location.pathname === path;
 
-  const isBeginnerActive = location.pathname === "/beginner";
+  const isDSAPracticeActive =
+    location.pathname === "/dsa/practice" ||
+    location.pathname.startsWith("/dsa/practice/");
 
   return (
     <>
@@ -27,8 +28,7 @@ function Sidebar({ isOpen, onClose }) {
           top-0 left-0
           z-50 md:z-auto
           h-full md:h-full
-          w-64
-          shrink-0
+          w-64 shrink-0
           border-r border-gray-800
           bg-gray-950
           transition-transform duration-300
@@ -49,7 +49,7 @@ function Sidebar({ isOpen, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-400 hover:bg-gray-900 hover:text-white"
+            className="rounded-lg p-2 text-gray-400 transition hover:bg-gray-900 hover:text-white"
           >
             <X size={20} />
           </button>
@@ -57,37 +57,86 @@ function Sidebar({ isOpen, onClose }) {
 
         {/* Sidebar content */}
         <div className="p-5">
-
-          {/* Beginner */}
+          {/* DSA */}
           <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
-            Practice
+            DSA
+          </p>
+
+          <div className="space-y-1">
+            {/* Beginner */}
+            <Link
+              to="/dsa/beginner"
+              onClick={onClose}
+              className={`
+                flex items-center justify-between
+                rounded-lg px-4 py-3
+                text-sm font-medium
+                transition
+                ${
+                  isActive("/dsa/beginner")
+                    ? "bg-green-500 text-gray-950"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                }
+              `}
+            >
+              <span>Beginner</span>
+
+              {isActive("/dsa/beginner") && (
+                <ChevronRight size={15} />
+              )}
+            </Link>
+
+            {/* DSA Practice */}
+            <Link
+              to="/dsa/practice"
+              onClick={onClose}
+              className={`
+                flex items-center justify-between
+                rounded-lg px-4 py-3
+                text-sm font-medium
+                transition
+                ${
+                  isDSAPracticeActive
+                    ? "bg-green-500 text-gray-950"
+                    : "text-gray-400 hover:bg-gray-900 hover:text-white"
+                }
+              `}
+            >
+              <span>DSA Practice</span>
+
+              {isDSAPracticeActive && (
+                <ChevronRight size={15} />
+              )}
+            </Link>
+          </div>
+
+          {/* SQL */}
+          <p className="mb-3 mt-7 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
+            SQL
           </p>
 
           <Link
-            to="/beginner"
+            to="/sql"
             onClick={onClose}
             className={`
               flex items-center justify-between
-              rounded-lg
-              px-4 py-3
+              rounded-lg px-4 py-3
               text-sm font-medium
               transition
               ${
-                isBeginnerActive
+                isActive("/sql")
                   ? "bg-green-500 text-gray-950"
                   : "text-gray-400 hover:bg-gray-900 hover:text-white"
               }
             `}
           >
-            <span>Beginner Problems</span>
+            <span>SQL Practice</span>
 
-            {isBeginnerActive && (
-              <span className="text-xs font-bold">→</span>
-            )}
+            {isActive("/sql") && <ChevronRight size={15} />}
           </Link>
 
           {/* Challenges */}
-          <p className="mb-3 mt-6 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
+          <p className="mb-3 mt-7 px-2 text-xs font-semibold uppercase tracking-widest text-gray-600">
             Challenges
           </p>
 
@@ -99,12 +148,11 @@ function Sidebar({ isOpen, onClose }) {
                 onClick={onClose}
                 className={`
                   flex items-center justify-between
-                  rounded-lg
-                  px-4 py-3
+                  rounded-lg px-4 py-3
                   text-sm font-medium
                   transition
                   ${
-                    isChallengeActive(days)
+                    isActive(`/dashboard/${days}`)
                       ? "bg-green-500 text-gray-950"
                       : "text-gray-400 hover:bg-gray-900 hover:text-white"
                   }
@@ -112,8 +160,8 @@ function Sidebar({ isOpen, onClose }) {
               >
                 <span>{days} Days</span>
 
-                {isChallengeActive(days) && (
-                  <span className="text-xs font-bold">→</span>
+                {isActive(`/dashboard/${days}`) && (
+                  <ChevronRight size={15} />
                 )}
               </Link>
             ))}

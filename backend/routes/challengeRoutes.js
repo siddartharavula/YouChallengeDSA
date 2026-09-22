@@ -1,14 +1,13 @@
 const express = require("express");
 
 const {
+  getChallenges,
   getChallenge,
-  getBeginnerProblems,
 } = require("../controllers/challengeController");
 
 const router = express.Router();
 
-// IMPORTANT: beginner must come before /:days
-router.get("/beginner", getBeginnerProblems);
+router.get("/", getChallenges);
 
 router.get("/:days", getChallenge);
 

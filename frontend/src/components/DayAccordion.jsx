@@ -50,7 +50,6 @@ function DayAccordion({
         className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
       >
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
-
           {/* Day Number */}
           <div
             className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold sm:h-11 sm:w-11 ${
@@ -84,7 +83,6 @@ function DayAccordion({
 
         {/* Progress */}
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
-
           <div className="hidden w-24 sm:block">
             <div className="h-1.5 overflow-hidden rounded-full bg-gray-800">
               <div
@@ -101,7 +99,7 @@ function DayAccordion({
           </div>
 
           <span
-            className={`text-lg text-gray-500 transition-transform duration-200 sm:text-xl ${
+            className={`text-lg text-gray-500 transition-transform sm:text-xl ${
               open ? "rotate-180" : ""
             }`}
           >
@@ -118,14 +116,13 @@ function DayAccordion({
               problem.link
             );
 
-            const platform = getPlatformLogo(
-              problem.platform
-            );
+            const platform =
+              getPlatformLogo(problem.platform);
 
             return (
               <div
                 key={problem.link}
-                className={`group px-4 py-3.5 transition-colors sm:px-6 sm:py-4 ${
+                className={`group px-4 py-2.5 transition-colors sm:px-6 sm:py-3 ${
                   index !== day.problems.length - 1
                     ? "border-b border-gray-800"
                     : ""
@@ -136,7 +133,6 @@ function DayAccordion({
                 }`}
               >
                 <div className="flex items-center gap-3">
-
                   {/* Checkbox */}
                   <button
                     type="button"
@@ -196,7 +192,6 @@ function DayAccordion({
                       className="h-6 w-6 rounded-md object-contain"
                     />
                   </a>
-
                 </div>
               </div>
             );

@@ -1,7 +1,33 @@
 const challenge15 = require("../data/15daysChallenge");
 const challenge30 = require("../data/30daysChallenge");
 const challenge45 = require("../data/45daysChallenge");
-const beginnerProblems = require("../data/beginnerProblems");
+
+const getChallenges = (req, res) => {
+  try {
+    res.status(200).json({
+      challenges: [
+        {
+          days: 15,
+          title: "15 Days Challenge",
+        },
+        {
+          days: 30,
+          title: "30 Days Challenge",
+        },
+        {
+          days: 45,
+          title: "45 Days Challenge",
+        },
+      ],
+    });
+  } catch (error) {
+    console.error("Error fetching challenges:", error.message);
+
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
+};
 
 const getChallenge = (req, res) => {
   try {
@@ -34,21 +60,7 @@ const getChallenge = (req, res) => {
   }
 };
 
-const getBeginnerProblems = (req, res) => {
-  try {
-    res.status(200).json({
-      problems: beginnerProblems,
-    });
-  } catch (error) {
-    console.error("Error fetching beginner problems:", error.message);
-
-    res.status(500).json({
-      message: "Server error",
-    });
-  }
-};
-
 module.exports = {
+  getChallenges,
   getChallenge,
-  getBeginnerProblems,
 };
