@@ -17,10 +17,6 @@ const platformData = {
     name: "SmartInterviews",
     logo: "/logos/smartinterviews.png",
   },
-  hackerrank: {
-    name: "HackerRank",
-    logo: "/logos/hackerrank.png",
-  },
   codechef: {
     name: "CodeChef",
     logo: "/logos/codechef.png",
@@ -40,16 +36,18 @@ function Beginner() {
         setError("");
 
         const response = await axios.get(
-          "https://youchallengedsa.onrender.com/api/dsa/beginner"
+          "https://youchallengedsa.onrender.com/api/dsa/beginner",
         );
 
         setData(response.data);
       } catch (error) {
-        console.error("Failed to load beginner DSA:", error);
+        console.log("ERROR:", error);
+        console.log("RESPONSE:", error.response);
+        console.log("STATUS:", error.response?.status);
+        console.log("DATA:", error.response?.data);
 
         setError(
-          error.response?.data?.message ||
-            "Failed to load beginner problems."
+          error.response?.data?.message || "Failed to load beginner problems.",
         );
       } finally {
         setLoading(false);
@@ -67,8 +65,7 @@ function Beginner() {
   };
 
   const getPlatform = (problem) => {
-    const platform =
-      problem.platform?.toLowerCase()?.replace(/\s+/g, "") || "";
+    const platform = problem.platform?.toLowerCase()?.replace(/\s+/g, "") || "";
 
     return (
       platformData[platform] || {
@@ -106,7 +103,7 @@ function Beginner() {
 
   const totalProblems = topics.reduce(
     (total, topic) => total + (topic.problems?.length || 0),
-    0
+    0,
   );
 
   const completedCount = Object.values(completed).filter(Boolean).length;
@@ -125,8 +122,8 @@ function Beginner() {
           </h2>
 
           <p className="mt-3 max-w-2xl text-sm leading-6 text-gray-500 sm:text-base">
-            Start with fundamental DSA problems and build your
-            problem-solving foundation.
+            Start with fundamental DSA problems and build your problem-solving
+            foundation.
           </p>
 
           <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-gray-500">
@@ -220,17 +217,13 @@ function Beginner() {
                           }
                         >
                           {isCompleted && (
-                            <span className="text-xs font-bold">
-                              ✓
-                            </span>
+                            <span className="text-xs font-bold">✓</span>
                           )}
                         </button>
-
                         {/* Number */}
                         <span className="w-7 shrink-0 text-xs text-gray-600">
                           {String(problemIndex + 1).padStart(2, "0")}
                         </span>
-
                         {/* Problem name */}
                         <div className="min-w-0 flex-1">
                           <p
@@ -246,7 +239,6 @@ function Beginner() {
                               `Problem ${problemIndex + 1}`}
                           </p>
                         </div>
-
                         {/* Platform logo */}
                         <a
                           href={problem.link || problem.url || "#"}

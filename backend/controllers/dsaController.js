@@ -5,12 +5,12 @@ const getDSA = (req, res) => {
   try {
     const beginnerCount = beginnerProblems.reduce(
       (total, topic) => total + topic.problems.length,
-      0
+      0,
     );
 
     const practiceCount = dsaPractice.reduce(
       (total, topic) => total + topic.problems.length,
-      0
+      0,
     );
 
     res.status(200).json({
@@ -37,15 +37,19 @@ const getDSA = (req, res) => {
 
 const getBeginnerProblems = (req, res) => {
   try {
+    const totalProblems = beginnerProblems.reduce(
+      (total, topic) => total + topic.problems.length,
+      0,
+    );
+
     res.status(200).json({
       title: "DSA Beginner",
+      topics: beginnerProblems.length,
+      count: totalProblems,
       problems: beginnerProblems,
     });
   } catch (error) {
-    console.error(
-      "Error fetching beginner problems:",
-      error.message
-    );
+    console.error("Error fetching beginner problems:", error.message);
 
     res.status(500).json({
       message: "Server error",
@@ -57,7 +61,7 @@ const getDSAPractice = (req, res) => {
   try {
     const totalProblems = dsaPractice.reduce(
       (total, topic) => total + topic.problems.length,
-      0
+      0,
     );
 
     res.status(200).json({
@@ -67,10 +71,7 @@ const getDSAPractice = (req, res) => {
       problems: dsaPractice,
     });
   } catch (error) {
-    console.error(
-      "Error fetching DSA practice:",
-      error.message
-    );
+    console.error("Error fetching DSA practice:", error.message);
 
     res.status(500).json({
       message: "Server error",
@@ -82,9 +83,7 @@ const getDSATopic = (req, res) => {
   try {
     const { topic } = req.params;
 
-    const foundTopic = dsaPractice.find(
-      (item) => item.slug === topic
-    );
+    const foundTopic = dsaPractice.find((item) => item.slug === topic);
 
     if (!foundTopic) {
       return res.status(404).json({
@@ -96,10 +95,7 @@ const getDSATopic = (req, res) => {
       topic: foundTopic,
     });
   } catch (error) {
-    console.error(
-      "Error fetching DSA topic:",
-      error.message
-    );
+    console.error("Error fetching DSA topic:", error.message);
 
     res.status(500).json({
       message: "Server error",
