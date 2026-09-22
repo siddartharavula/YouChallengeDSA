@@ -444,10 +444,885 @@ const challenge = [
     ],
   },
 
-  // Days 6–15 follow the exact same structure:
-  // day: 6,
-  // problems: [...DSA from your PDF...],
-  // sql: [3 SQL questions]
+  {
+    day: 6,
+
+    problems: [
+      {
+        name: "Longest Increasing Subsequence 1587115620",
+        link: "https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Is Graph Bipartite",
+        link: "https://leetcode.com/problems/is-graph-bipartite/",
+        platform: "leetcode",
+      },
+      {
+        name: "Fruit Into Baskets",
+        link: "https://leetcode.com/problems/fruit-into-baskets/",
+        platform: "leetcode",
+      },
+      {
+        name: "Minimum Path Sum",
+        link: "https://leetcode.com/problems/minimum-path-sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Binary Tree Zigzag Level Order Traversal",
+        link: "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+        platform: "leetcode",
+      },
+      {
+        name: "Attend All Meetings Ii",
+        link: "https://www.geeksforgeeks.org/problems/attend-all-meetings-ii/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Sort Colors",
+        link: "https://leetcode.com/problems/sort-colors/",
+        platform: "leetcode",
+      },
+      {
+        name: "Distance From The Source Bellman Ford Algorithm",
+        link: "https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Asteroid Collision",
+        link: "https://leetcode.com/problems/asteroid-collision/",
+        platform: "leetcode",
+      },
+      {
+        name: "Number Of Anagramic Groups",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/number-of-anagramic-groups?page=0&pageSize=10&scoreFilter=100&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Palindrome Linked List",
+        link: "https://leetcode.com/problems/palindrome-linked-list/",
+        platform: "leetcode",
+      },
+      {
+        name: "Divide Two Integers",
+        link: "https://leetcode.com/problems/divide-two-integers/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Sales Analysis III",
+        link: "https://leetcode.com/problems/sales-analysis-iii/",
+        platform: "leetcode",
+      },
+      {
+        name: "User Activity for the Past 30 Days I",
+        link: "https://leetcode.com/problems/user-activity-for-the-past-30-days-i/",
+        platform: "leetcode",
+      },
+      {
+        name: "Article Views I",
+        link: "https://leetcode.com/problems/article-views-i/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 7,
+
+    problems: [
+      {
+        name: "Sliding Window Maximum",
+        link: "https://leetcode.com/problems/sliding-window-maximum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Longest Common Subsequence",
+        link: "https://leetcode.com/problems/longest-common-subsequence/",
+        platform: "leetcode",
+      },
+      {
+        name: "Number Of Provinces",
+        link: "https://leetcode.com/problems/number-of-provinces/",
+        platform: "leetcode",
+      },
+      {
+        name: "Construct Binary Search Tree From Preorder Traversal",
+        link: "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/",
+        platform: "leetcode",
+      },
+      {
+        name: "Lemonade Change",
+        link: "https://leetcode.com/problems/lemonade-change/",
+        platform: "leetcode",
+      },
+      {
+        name: "Maximum Depth Of Binary Tree",
+        link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+        platform: "leetcode",
+      },
+      {
+        name: "LRU Cache",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/lru-cache?page=0&pageSize=10&search=lru",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Protective Villagers",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/protective-villagers?page=1&pageSize=10&tagFilter=BINARY%20SEARCH",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Combination Sum",
+        link: "https://leetcode.com/problems/combination-sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Triple Trouble",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/triple-trouble?page=3&pageSize=10",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Implementing Floyd Warshall2042",
+        link: "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Union Of Two Sorted Arrays 1587115621",
+        link: "https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Longest Bitonic Subsequence0824",
+        link: "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1",
+        platform: "geeksforgeeks",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Reformat Department Table",
+        link: "https://leetcode.com/problems/reformat-department-table/",
+        platform: "leetcode",
+      },
+      {
+        name: "Top Travellers",
+        link: "https://leetcode.com/problems/top-travellers/",
+        platform: "leetcode",
+      },
+      {
+        name: "Group Sold Products By The Date",
+        link: "https://leetcode.com/problems/group-sold-products-by-the-date/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 8,
+
+    problems: [
+      {
+        name: "Sum of OR of Subarrays",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/sum-of-or-of-subarrays?page=1&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Container With Most Water",
+        link: "https://leetcode.com/problems/container-with-most-water/",
+        platform: "leetcode",
+      },
+      {
+        name: "Check If Array Is Sorted And Rotated",
+        link: "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+        platform: "leetcode",
+      },
+      {
+        name: "Words Start And End With Vowel",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/words-start-and-end-with-vowel?page=0&pageSize=10&scoreFilter=100&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Binary Tree Inorder Traversal",
+        link: "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+        platform: "leetcode",
+      },
+      {
+        name: "Implementing Dijkstra Set 1 Adjacency Matrix",
+        link: "https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Linked List Cycle Ii",
+        link: "https://leetcode.com/problems/linked-list-cycle-ii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rotting Oranges",
+        link: "https://leetcode.com/problems/rotting-oranges/",
+        platform: "leetcode",
+      },
+      {
+        name: "Infix To Postfix 1587115620",
+        link: "https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Best Time To Buy And Sell Stock With Cooldown",
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+        platform: "leetcode",
+      },
+      {
+        name: "Single Element In A Sorted Array",
+        link: "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+        platform: "leetcode",
+      },
+      {
+        name: "Path In Matrix3805",
+        link: "https://www.geeksforgeeks.org/problems/path-in-matrix3805/1",
+        platform: "geeksforgeeks",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Patients With a Condition",
+        link: "https://leetcode.com/problems/patients-with-a-condition/",
+        platform: "leetcode",
+      },
+      {
+        name: "Customer Who Visited but Did Not Make Any Transactions",
+        link: "https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/",
+        platform: "leetcode",
+      },
+      {
+        name: "Bank Account Summary II",
+        link: "https://leetcode.com/problems/bank-account-summary-ii/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 9,
+
+    problems: [
+      {
+        name: "Remove Covered Intervals",
+        link: "https://leetcode.com/problems/remove-covered-intervals/",
+        platform: "leetcode",
+      },
+      {
+        name: "Topological Sort",
+        link: "https://www.geeksforgeeks.org/problems/topological-sort/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Minimum Size Subarray Sum",
+        link: "https://leetcode.com/problems/minimum-size-subarray-sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rabin Karp String Matching Algorithm",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/rabin-karp-string-matching-algorithm?page=0&pageSize=10&scoreFilter=100&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Unique Paths Ii",
+        link: "https://leetcode.com/problems/unique-paths-ii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Find Minimum In Rotated Sorted Array",
+        link: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+        platform: "leetcode",
+      },
+      {
+        name: "Sum Of Subarray Minimums",
+        link: "https://leetcode.com/problems/sum-of-subarray-minimums/",
+        platform: "leetcode",
+      },
+      {
+        name: "Vertical Order Traversal Of A Binary Tree",
+        link: "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/",
+        platform: "leetcode",
+      },
+      {
+        name: "Target Sum",
+        link: "https://leetcode.com/problems/target-sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Product of XOR of Pairs",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/product-of-xor-of-pairs?page=1&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Rotate List",
+        link: "https://leetcode.com/problems/rotate-list/",
+        platform: "leetcode",
+      },
+      {
+        name: "Maximum Sum Circular Subarray",
+        link: "https://leetcode.com/problems/maximum-sum-circular-subarray/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Fix Names in a Table",
+        link: "https://leetcode.com/problems/fix-names-in-a-table/",
+        platform: "leetcode",
+      },
+      {
+        name: "Daily Leads and Partners",
+        link: "https://leetcode.com/problems/daily-leads-and-partners/",
+        platform: "leetcode",
+      },
+      {
+        name: "Find Followers Count",
+        link: "https://leetcode.com/problems/find-followers-count/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 10,
+
+    problems: [
+      {
+        name: "Two Set Bits",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/two-set-bits?page=1&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Unique Paths",
+        link: "https://leetcode.com/problems/unique-paths/",
+        platform: "leetcode",
+      },
+      {
+        name: "01 Matrix",
+        link: "https://leetcode.com/problems/01-matrix/",
+        platform: "leetcode",
+      },
+      {
+        name: "Remove Nth Node From End Of List",
+        link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+        platform: "leetcode",
+      },
+      {
+        name: "Subsets Ii",
+        link: "https://leetcode.com/problems/subsets-ii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Missing Number In Array1416",
+        link: "https://www.geeksforgeeks.org/problems/missing-number-in-array1416/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Detect Cycle In An Undirected Graph",
+        link: "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Perfect Sum Problem5633",
+        link: "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Implement Queue Using Stacks",
+        link: "https://leetcode.com/problems/implement-queue-using-stacks/",
+        platform: "leetcode",
+      },
+      {
+        name: "Insert Interval",
+        link: "https://leetcode.com/problems/insert-interval/",
+        platform: "leetcode",
+      },
+      {
+        name: "Maximum Subarray",
+        link: "https://leetcode.com/problems/maximum-subarray/",
+        platform: "leetcode",
+      },
+      {
+        name: "Same Tree",
+        link: "https://leetcode.com/problems/same-tree/",
+        platform: "leetcode",
+      },
+      {
+        name: "Finding Cuberoot",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/finding-cuberoot?page=0&pageSize=10",
+        platform: "smartinterviews",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Find Total Time Spent by Each Employee",
+        link: "https://leetcode.com/problems/find-total-time-spent-by-each-employee/",
+        platform: "leetcode",
+      },
+      {
+        name: "Recyclable and Low Fat Products",
+        link: "https://leetcode.com/problems/recyclable-and-low-fat-products/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rearrange Products Table",
+        link: "https://leetcode.com/problems/rearrange-products-table/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 11,
+
+    problems: [
+      {
+        name: "Path With Minimum Effort",
+        link: "https://leetcode.com/problems/path-with-minimum-effort/",
+        platform: "leetcode",
+      },
+      {
+        name: "X and Y Set Bits",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/x-and-y-set-bits?page=0&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Maximal Rectangle",
+        link: "https://leetcode.com/problems/maximal-rectangle/",
+        platform: "leetcode",
+      },
+      {
+        name: "House Robber II",
+        link: "https://leetcode.com/problems/house-robber-ii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Network Delay Time",
+        link: "https://leetcode.com/problems/network-delay-time/",
+        platform: "leetcode",
+      },
+      {
+        name: "Smaller Elements",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/smaller-elements?page=5&pageSize=10",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Partition Array Into Two Arrays To Minimize Sum Difference",
+        link: "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/",
+        platform: "leetcode",
+      },
+      {
+        name: "Subsets Of An Array",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/subsets-of-an-array?page=2&pageSize=10",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Next Permutation",
+        link: "https://leetcode.com/problems/next-permutation/",
+        platform: "leetcode",
+      },
+      {
+        name: "Reverse Linked List",
+        link: "https://leetcode.com/problems/reverse-linked-list/",
+        platform: "leetcode",
+      },
+      {
+        name: "Longest Substring Without Vowels",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/longest-substring-without-vowels?page=0&pageSize=10&scoreFilter=50&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Binary Tree Level Order Traversal",
+        link: "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+        platform: "leetcode",
+      },
+      {
+        name: "Non Overlapping Intervals",
+        link: "https://leetcode.com/problems/non-overlapping-intervals/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Calculate Special Bonus",
+        link: "https://leetcode.com/problems/calculate-special-bonus/",
+        platform: "leetcode",
+      },
+      {
+        name: "The Latest Login in 2020",
+        link: "https://leetcode.com/problems/the-latest-login-in-2020/",
+        platform: "leetcode",
+      },
+      {
+        name: "Employees With Missing Information",
+        link: "https://leetcode.com/problems/employees-with-missing-information/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 12,
+
+    problems: [
+      {
+        name: "X 1s and Y 0s",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/x-1s-and-y-0s?page=0&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Top K Frequent Words",
+        link: "https://leetcode.com/problems/top-k-frequent-words/",
+        platform: "leetcode",
+      },
+      {
+        name: "Maximum Product Subarray",
+        link: "https://leetcode.com/problems/maximum-product-subarray/",
+        platform: "leetcode",
+      },
+      {
+        name: "All Nodes Distance K In Binary Tree",
+        link: "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/",
+        platform: "leetcode",
+      },
+      {
+        name: "Detect Cycle In A Directed Graph",
+        link: "https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Number Of Islands",
+        link: "https://leetcode.com/problems/number-of-islands/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rotation4723",
+        link: "https://www.geeksforgeeks.org/problems/rotation4723/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Prefix To Infix Conversion",
+        link: "https://www.geeksforgeeks.org/problems/prefix-to-infix-conversion/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Best Time To Buy And Sell Stock",
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+        platform: "leetcode",
+      },
+      {
+        name: "3Sum",
+        link: "https://leetcode.com/problems/3sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Shortest Common Supersequence",
+        link: "https://leetcode.com/problems/shortest-common-supersequence/",
+        platform: "leetcode",
+      },
+      {
+        name: "Check Anagrams",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/check-anagrams?page=0&pageSize=10&scoreFilter=50&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Jump Game",
+        link: "https://leetcode.com/problems/jump-game/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Second Highest Salary",
+        link: "https://leetcode.com/problems/second-highest-salary/",
+        platform: "leetcode",
+      },
+      {
+        name: "Nth Highest Salary",
+        link: "https://leetcode.com/problems/nth-highest-salary/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rank Scores",
+        link: "https://leetcode.com/problems/rank-scores/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 13,
+
+    problems: [
+      {
+        name: "Delete The Middle Node Of A Linked List",
+        link: "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/",
+        platform: "leetcode",
+      },
+      {
+        name: "Count Complete Tree Nodes",
+        link: "https://leetcode.com/problems/count-complete-tree-nodes/",
+        platform: "leetcode",
+      },
+      {
+        name: "Course Schedule",
+        link: "https://leetcode.com/problems/course-schedule/",
+        platform: "leetcode",
+      },
+      {
+        name: "Set Matrix Zeroes",
+        link: "https://leetcode.com/problems/set-matrix-zeroes/",
+        platform: "leetcode",
+      },
+      {
+        name: "Reverse The Sentence",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/reverse-the-sentence?page=0&pageSize=10&scoreFilter=50&tagFilter=STRING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Valid Parentheses",
+        link: "https://leetcode.com/problems/valid-parentheses/",
+        platform: "leetcode",
+      },
+      {
+        name: "Combination Sum Iii",
+        link: "https://leetcode.com/problems/combination-sum-iii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Number Of Longest Increasing Subsequence",
+        link: "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+        platform: "leetcode",
+      },
+      {
+        name: "Minimum Bit Flips To Convert Number",
+        link: "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/",
+        platform: "leetcode",
+      },
+      {
+        name: "Rearrange Array Elements By Sign",
+        link: "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+        platform: "leetcode",
+      },
+      {
+        name: "Check Forest",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/check-forest?page=0&pageSize=10&tagFilter=GRAPHS&tagFilter=GRAPH%20COLORING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Climbing Stairs",
+        link: "https://leetcode.com/problems/climbing-stairs/",
+        platform: "leetcode",
+      },
+      {
+        name: "Jump Game Ii",
+        link: "https://leetcode.com/problems/jump-game-ii/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Consecutive Numbers",
+        link: "https://leetcode.com/problems/consecutive-numbers/",
+        platform: "leetcode",
+      },
+      {
+        name: "Department Highest Salary",
+        link: "https://leetcode.com/problems/department-highest-salary/",
+        platform: "leetcode",
+      },
+      {
+        name: "Tree Node",
+        link: "https://leetcode.com/problems/tree-node/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 14,
+
+    problems: [
+      {
+        name: "Product Manufacturing",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/product-manufacturing?page=0&pageSize=10&tagFilter=BINARY%20SEARCH",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Reverse Nodes In K Group",
+        link: "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+        platform: "leetcode",
+      },
+      {
+        name: "Spiral Matrix",
+        link: "https://leetcode.com/problems/spiral-matrix/",
+        platform: "leetcode",
+      },
+      {
+        name: "Count Number Of Nice Subarrays",
+        link: "https://leetcode.com/problems/count-number-of-nice-subarrays/",
+        platform: "leetcode",
+      },
+      {
+        name: "Kth Smallest Element",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/kth-smallest-element?page=0&pageSize=10&tagFilter=HEAPS",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Best Time To Buy And Sell Stock Iii",
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+        platform: "leetcode",
+      },
+      {
+        name: "Implement Stack Using Queues",
+        link: "https://leetcode.com/problems/implement-stack-using-queues/",
+        platform: "leetcode",
+      },
+      {
+        name: "Word Ladder",
+        link: "https://leetcode.com/problems/word-ladder/",
+        platform: "leetcode",
+      },
+      {
+        name: "Filter Occupied Intervals",
+        link: "https://leetcode.com/problems/filter-occupied-intervals/",
+        platform: "leetcode",
+      },
+      {
+        name: "Best Time To Buy And Sell Stock Iv",
+        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/",
+        platform: "leetcode",
+      },
+      {
+        name: "Single Number",
+        link: "https://leetcode.com/problems/single-number/",
+        platform: "leetcode",
+      },
+      {
+        name: "Kth Smallest Element In A BST",
+        link: "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Exchange Seats",
+        link: "https://leetcode.com/problems/exchange-seats/",
+        platform: "leetcode",
+      },
+      {
+        name: "Market Analysis I",
+        link: "https://leetcode.com/problems/market-analysis-i/",
+        platform: "leetcode",
+      },
+      {
+        name: "Capital Gain/Loss",
+        link: "https://leetcode.com/problems/capital-gainloss/",
+        platform: "leetcode",
+      },
+    ],
+  },
+
+  {
+    day: 15,
+
+    problems: [
+      {
+        name: "Subarray Max XOR",
+        link: "https://hive.smartinterviews.in/contests/smart-interviews-primary/problems/subarray-max-xor?page=2&pageSize=10&tagFilter=BIT%20MANIPULATION&tagFilter=BIT%20MASKING",
+        platform: "smartinterviews",
+      },
+      {
+        name: "Rotate Array",
+        link: "https://leetcode.com/problems/rotate-array/",
+        platform: "leetcode",
+      },
+      {
+        name: "Symmetric Tree",
+        link: "https://leetcode.com/problems/symmetric-tree/",
+        platform: "leetcode",
+      },
+      {
+        name: "Max Sum Subarray Of Size K5313",
+        link: "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Partition Equal Subset Sum",
+        link: "https://leetcode.com/problems/partition-equal-subset-sum/",
+        platform: "leetcode",
+      },
+      {
+        name: "Minimum Spanning Tree",
+        link: "https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Search In Rotated Sorted Array",
+        link: "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+        platform: "leetcode",
+      },
+      {
+        name: "Longest Palindromic Subsequence",
+        link: "https://leetcode.com/problems/longest-palindromic-subsequence/",
+        platform: "leetcode",
+      },
+      {
+        name: "Remove K Digits",
+        link: "https://leetcode.com/problems/remove-k-digits/",
+        platform: "leetcode",
+      },
+      {
+        name: "Shortest Path In Binary Matrix",
+        link: "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+        platform: "leetcode",
+      },
+      {
+        name: "Infix To Prefix Notation",
+        link: "https://www.geeksforgeeks.org/problems/infix-to-prefix-notation/1",
+        platform: "geeksforgeeks",
+      },
+      {
+        name: "Assign Cookies",
+        link: "https://leetcode.com/problems/assign-cookies/",
+        platform: "leetcode",
+      },
+      {
+        name: "Subarrays With K Different Integers",
+        link: "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+        platform: "leetcode",
+      },
+    ],
+
+    sql: [
+      {
+        name: "Department Top Three Salaries",
+        link: "https://leetcode.com/problems/department-top-three-salaries/",
+        platform: "leetcode",
+      },
+      {
+        name: "Trips and Users",
+        link: "https://leetcode.com/problems/trips-and-users/",
+        platform: "leetcode",
+      },
+      {
+        name: "Human Traffic of Stadium",
+        link: "https://leetcode.com/problems/human-traffic-of-stadium/",
+        platform: "leetcode",
+      },
+    ],
+  },
 ];
 
 module.exports = challenge;
